@@ -4,6 +4,7 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import './App.css';
 import Login from './Login';
 import LogOut from './LogOut';
+import Signup from './Signup';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
