@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import axios from 'axios';
 
-function Signup() {
-  const [elmail, setElmail] = useState("");
+function SignUp() {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
 
   const signUpHandler = () => {
     axios.post('/signup', {
-        email: elmail,
+        email: email,
         password: password,
         nickname: nickname
     })
@@ -19,7 +19,7 @@ function Signup() {
 
   const checkEmailInfo = () => {
     axios.post('/signup', {
-        email: elmail
+        email: email
     })
     .then(res => {
         if(res.status === 200) {
@@ -60,23 +60,26 @@ function Signup() {
           <label>Sign Up</label>
           <br />
           <input 
-            value={elmail} 
-            onChange={(e) => setElmail(e.target.value)} 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
             type="text" 
-            placeholder="email" />
+            placeholder="email"
+          />
           <button onClick={() => checkEmailInfo()}>확인</button>  
           <br />  
           <input 
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          type="password" 
-          placeholder="password" />
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            type="password" 
+            placeholder="password" 
+          />
           <br />
           <input 
-          value={nickname} 
-          onChange={(e) => setNickname(e.target.value)} 
-          type="text" 
-          placeholder="nickname" />
+            value={nickname} 
+            onChange={(e) => setNickname(e.target.value)} 
+            type="text" 
+            placeholder="nickname" 
+          />
           <button onClick={() => checkNickInfo()}>확인</button> 
           <input type="file" onChange={handleImageChange} />
           <button onClick={() => handleImageUpload}>프로필 사진 등록</button>
@@ -91,4 +94,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default SignUp;

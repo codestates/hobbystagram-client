@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
 
 function Login({ handleLoginInfo }) {
   const [email, setEmail] = useState("");
@@ -41,16 +40,16 @@ function Login({ handleLoginInfo }) {
             onChange={(e) => setEmail(e.target.value)} 
             type="text"
             placeholder="email"
-            />
-            <br />
+          />
+          <br />
           <input
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="password"
-            />  
-            <button onClick={() => logInHandler()}>Log In</button>
-            <div>
+          />  
+          <button onClick={() => logInHandler()}>Log In</button>
+          <div>
             <h3>회원이 아니신가요?</h3>
           </div>
         </div>
