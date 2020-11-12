@@ -1,25 +1,27 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import axios from 'axios';
 
-function Signup() {
-  const [elmail, setElmail] = useState("");
+function SignUp({ history }) {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
+  const [img, setImage] = useState(null);
 
   const signUpHandler = () => {
     axios.post('/signup', {
-        email: elmail,
+        email: email,
         password: password,
         nickname: nickname
     })
-    // .then(res => {
-    //     history.push('/')
-    // })
+    .then(res => {
+        history.push('/')
+    })
   }
 
   const checkEmailInfo = () => {
     axios.post('/signup', {
-        email: elmail
+        email: email
     })
     .then(res => {
         if(res.status === 200) {
@@ -45,12 +47,15 @@ function Signup() {
     })
   }
 
-  const handleImageChange = () => {
-
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0])
   }
 
-  const handleImageUpload = () => {
-      
+  const handleImageUpload = async () => {
+      const formData = new FormData();
+      formData.append('file', img)
+      const res = await axios.post('/signup/avatar', formData);
+      console.log(res);
   }
 
   return (
@@ -60,8 +65,8 @@ function Signup() {
           <label>Sign Up</label>
           <br />
           <input 
-            value={elmail} 
-            onChange={(e) => setElmail(e.target.value)} 
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
             type="text" 
             placeholder="email" />
           <button onClick={() => checkEmailInfo()}>확인</button>  
@@ -78,8 +83,11 @@ function Signup() {
           type="text" 
           placeholder="nickname" />
           <button onClick={() => checkNickInfo()}>확인</button> 
-          <input type="file" onChange={handleImageChange} />
-          <button onClick={() => handleImageUpload}>프로필 사진 등록</button>
+          <input 
+            type="file" 
+            accept="image/png, image/jpeg, image/gif"
+            onChange={handleImageChange} />
+          <button onClick={handleImageUpload}>프로필 사진 등록</button>
           <br />
           <button onClick={() => signUpHandler()}>Sign Up</button>
           <div>
@@ -91,4 +99,4 @@ function Signup() {
   );
 }
 
-export default Signup;
+export default SignUp;
