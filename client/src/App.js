@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch, Route, Redirect, withRouter } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter, useHistory } from "react-router-dom";
 import axios from "axios";
 
 import './App.css';
@@ -12,13 +12,15 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
 
-  const LoginSuccess = () => {
+  const history = useHistory();
+
+  const handleLoginInfo = () => {
     axios
       .get('http://34.64.248.85:8080/content')
       .then(res => {
         setIsLoggedIn(isLoggedIn)
         setUserInfo(res.data)
-        this.props.history.push('/contentspage')
+        history.push('/contentspage')
       })
   }
 
@@ -27,7 +29,7 @@ function App() {
       .post('http://34.64.248.85:8080/logout')
       .then(() => {
         setIsLoggedIn(!isLoggedIn)
-        this.props.history.push('/')
+        history.push('/')
       })
   }
 
@@ -58,7 +60,7 @@ function App() {
         <Route 
           path="/login" 
           render={() => 
-            <Login LoginSuccess={LoginSuccess} />
+            <Login handleLoginInfo={handleLoginInfo} />
           }
         />
         <Route 
