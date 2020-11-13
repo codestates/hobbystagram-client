@@ -13,8 +13,9 @@ const dropAreaStyle = {
   ...dropAreaImageStyle,
   border: borderStyle
 };
+
 function SideBar() {
-    const [data, setData] = useState(false);
+  const [data, setData] = useState(false);
   const [err, setErr] = useState(false);
   const onDrop = e => {
     e.preventDefault();
