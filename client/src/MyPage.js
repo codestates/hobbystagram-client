@@ -71,6 +71,7 @@ function MyPage() {
           <button onClick={() => checkNickInfo()}>확인</button>
           <input 
             type="file" 
+            style={{display: 'none'}}
             accept="image/png, image/jpeg, image/gif"
             onChange={handleImageChange} />
           <button onClick={handleImageUpload}>프로필 사진 등록</button>
