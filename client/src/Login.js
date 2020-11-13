@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-function Login({ handleLoginInfo }) {
+function Login({ LoginSuccess }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,7 +22,7 @@ function Login({ handleLoginInfo }) {
 
         if(data) {
             // 유저 정보를 업데이트 해 주는 함수에 데이타 값을 담아 실행
-            handleLoginInfo(data);
+            LoginSuccess(data);
         }
         alert("회원 정보를 다시 확인해 주세요")
     }
