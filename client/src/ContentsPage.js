@@ -2,7 +2,7 @@ import React, { useState, useEffect }  from 'react';
 // import { withRouter } from "react-router-dom";
 // import axios from "axios";
 // const fetch = require('node-fetch');
-
+import Header from './Header';
 import SideBar from './SideBar';
 import ContentsPageEntry from './ContentsPageEntry';
 // import examplePhotos from './photos.json';
@@ -99,10 +99,10 @@ function ContentsPage({ LogOutHandler, redirectToMyPage }) {
         <div className="contentspage">
             
             <div className="header">
-                <Header userInfo={userInfo} LogOutHandler={LogOutHandler} />
+                <Header />
             </div>
             <div className="sidebar">
-                <SideBar getPhotos={getPhotos} />
+                <SideBar />
                 <h1>사진 찾기</h1>
             </div>
             <div className="contents" >
