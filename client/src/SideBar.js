@@ -1,19 +1,12 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 
 
 const width = 300;
 const height = 300;
 const borderStyle = "2px dotted #000";
 
-const dropAreaImageStyle = {
-  width,
-  height
-};
 
-const dropAreaStyle = {
-  ...dropAreaImageStyle,
-  border: borderStyle
-};
 const tags = [
   {
     label: 'tag',
@@ -36,7 +29,7 @@ const tags = [
     value: 'ki'
 }
 ]
-function SideBar() {
+function SideBar({ getPhotos }) {
   // image drag & drop 의 state
   const [data, setData] = useState(false);
   const [err, setErr] = useState(false);
@@ -46,6 +39,15 @@ function SideBar() {
 
 
   // drag & drop 을 구현하기 위한 함수
+  const dropAreaImageStyle = {
+    width,
+    height
+  };
+  
+  const dropAreaStyle = {
+    ...dropAreaImageStyle,
+    border: borderStyle
+  }
   const onDrop = e => {
     e.preventDefault();
     const {
@@ -82,7 +84,14 @@ function SideBar() {
     e.preventDefault();
   };
   
-  
+  // {/* 올려놓은 사진과 선택한 태그를 자료로 이미지 업로드하는 함수 */}
+  const handleImageUpload = async () => {
+    const formData = new FormData();
+    formData.append('file', data)
+    formData.append('tag', tag)
+    const res = await axios.post('/signup/avatar', formData);
+    console.log(res);
+}
 
   return (
     <div>
@@ -113,6 +122,21 @@ function SideBar() {
         ))}
       </select>
     </form>
+
+    {/* 올려놓은 사진과 선택한 태그를 자료로 이미지 업로드하기 */}
+    <button onClick={handleImageUpload}>사진 업로드</button>
+
+    {/* 태그를 선택하면 선택된 태그 기준으로 get 요청 보내서 화면에 뿌려주기       */}
+    <form>
+      <select>
+        {tags.map(tag => (
+          <option key={tag.value} value={tag.label} onChange={setTag}>
+            {tag.label}
+          </option>
+        ))}
+      </select>
+      <button onClick={() => getPhotos()}>선택한 태그만 모아보기</button>
+    </form>         
 
     </div>
   );
