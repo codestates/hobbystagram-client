@@ -54,19 +54,19 @@ function Login({ LoginSuccess }) {
           <div className="signup-link">
             <a>
               <Link to='/signup'>
-              <h3>회원이 아니신가요?</h3>
+                <h3>회원이 아니신가요?</h3>
               </Link>
-              </a>
+            </a>
           </div>
           <div className="social-link">
             <a>
-            <Link to=''>
+              <Link to=''>
               <h3>/소셜 로그인</h3>
               </Link>
             </a>
           </div>
         </div>
-    </div>
+      </div>
     </div>
   );
 }

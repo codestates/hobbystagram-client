@@ -38,7 +38,7 @@ function Comments () {
     setList(list => list.filter(item => item.index !== index))
   }
 
-  // 댓글 뒤에서부터만 삭제되는 것 수정(index)
+  // 댓글 뒤에서부터만 삭제되는 것 수정(index) - 받아오는 것과 연동하여..
   // 입력 후 clear form 기능 구현
   // 기타 서버와 연동해야 할 부분들..
 
