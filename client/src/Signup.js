@@ -17,14 +17,14 @@ function SignUp() {
   const [err, setErr] = useState(false);
 
   const signUpHandler = () => {
-    axios.post('/signup', {
+    axios.post('http://34.64.248.85:8080/user/signup', {
         email: email,
         password: password,
         nickname: nickname
     })
-    // .then(res => {
-    //     history.push('/')
-    // })
+    .then(res => {
+        console.log(res);
+    })
   }
 
   const checkEmailInfo = () => {
@@ -157,7 +157,7 @@ function SignUp() {
 
           
           <button className="avatarup" onClick={() => handleImageUpload}>프로필 사진 등록</button>
-          <br />
+          
           <button className="signup" onClick={() => signUpHandler()}>회원 가입</button>
           <div className="login-link">
             <a>

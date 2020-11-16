@@ -12,22 +12,23 @@ function Login({ LoginSuccess }) {
       // 둘 다 입력이 되어있다면 서버에 로그인 정보 요청
       // 응답을 받아서 로그인 유저 정보를 업데이트하거나
       // 에러 메시지를 띄움
-    if(setEmail("") || setPassword("")) {
-        alert("회원 정보를 입력해 주세요")
-    } else {
-        const { data } = await axios.post('/signin', {
-            params: {
+    // if(email === "" || password === "") {
+    //     alert("회원 정보를 입력해 주세요")
+    // } else {
+        const res = await axios.post('http://34.64.248.85:8080/user/signin', {
+             
                 email: email,
                 password: password
-            }
+            
         });
+        console.log('res', res);
 
-        if(data) {
-            // 유저 정보를 업데이트 해 주는 함수에 데이타 값을 담아 실행
-            LoginSuccess(data);
-        }
-        alert("회원 정보를 다시 확인해 주세요")
-    }
+        // if(res) {
+        //     // 유저 정보를 업데이트 해 주는 함수에 데이타 값을 담아 실행
+        //     LoginSuccess(res);
+        // }
+        // alert("회원 정보를 다시 확인해 주세요")
+   // }
 
   }
 
