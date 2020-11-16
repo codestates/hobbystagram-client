@@ -1,0 +1,44 @@
+{
+    "examplePhotos" : [ 
+    {
+        "id": 1, 
+        "path" : "http://thumb.comic.naver.net/webtoon/63129/1/inst_thumbnail_20090331182235.jpg"
+    } , 
+    {
+        "id": 2, 
+        "path" : "http://thumb.comic.naver.net/webtoon/63129/2/inst_thumbnail_20090413164943.jpg"
+    } , 
+    {
+        "id": 3, 
+        "path" : "http://thumb.comic.naver.net/webtoon/63129/3/inst_thumbnail_20090420164340.jpg"
+    } , 
+    {
+        "id": 4, 
+        "path" : "http://thumb.comic.naver.net/webtoon/63129/4/inst_thumbnail_20090427152845.jpg"
+    } , 
+    {
+        "id": 5, 
+        "path" : "http://thumb.comic.naver.net/webtoon/63129/5/inst_thumbnail_20090504181825.jpg"
+    } , 
+    {
+        "id": 6, 
+        "path" : "http://thumb.comic.naver.net/webtoon/63129/6/inst_thumbnail_20090511181528.jpg"
+    } , 
+    {
+        "id": 7, 
+        "path" : "http://thumb.comic.naver.net/webtoon/63129/7/inst_thumbnail_20090518174419.jpg"
+    } , 
+    {
+        "id": 8, 
+        "path" : "http://thumb.comic.naver.net/webtoon/63129/8/inst_thumbnail_20090525175403.jpg"
+    } , 
+    {
+        "id": 9, 
+        "path" : "http://thumb.comic.naver.net/webtoon/63129/9/inst_thumbnail_20090601165320.jpg"
+    } , 
+    {
+        "id": 10, 
+        "path" : "http://thumb.comic.naver.net/webtoon/63129/10/inst_thumbnail_20090608173106.jpg"
+    }
+    ]
+}
