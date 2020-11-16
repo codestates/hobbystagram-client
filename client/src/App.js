@@ -7,6 +7,7 @@ import Login from './Login';
 import SignUp from './Signup';
 import MyPage from './MyPage';
 import ContentsPage from './ContentsPage';
+// import examplePhotos from './photos.json';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -45,6 +46,48 @@ function App() {
   //           </div>
   //       </div>
   //   )
+  // }
+       
+  // const getPhotos = () => {
+    // axios
+    //   .get('http://34.64.248.85:8080/photo/?_limit=12', { // 엔드 포인트 확인 // 한번에 12개의 사진을 받아오고 싶다(최신순)
+    //     responseType: 'arraybuffer'
+    //   })
+    //   .then(res => {
+    //     Buffer.from(res.data, 'binary').toString('base64') // 사진별로 분리해주지 않아도 되는가?
+    //   })
+    //   .then((photos) => {
+    //     setPhotos(photos)
+    //     history.push('/contentspage')
+    //   })
+
+    // axios
+    //   .get('https://www.dropbox.com/s/k2hmky63p2iqqhd/test_image.jpg?dl=0', { // 임시 확인용 // 포스트맨에서 작동 // 콘솔에서는 CORS 에러
+    //       responseType: 'arraybuffer'
+    //   })
+    //   .then(res => {
+    //     Buffer.from(res.data, 'binary').toString('base64') // 사진별로 분리해주지 않아도 되는가?
+    //   })
+    //   .then((photos) => {
+    //     setPhotos(photos)
+    //     history.push('/contentspage')
+    //   })
+
+  //   axios
+  //     .get(examplePhotos)
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setPhotos(data)
+  //       console.log(data)
+  //     })
+  // }
+
+  const redirectToMyPage = () => {
+    window.location.assign("/mypage") // 뒤로 가기 가능, replace()는 불가능
+  }
+
+  // const handlePhotoClick = (e) => {
+  //   setPhoto(e.target.value) // ?
   // }
 
   const getPhotos = () => {
@@ -98,7 +141,9 @@ function App() {
           <Route
             path="/contentspage"
             render={() =>
-              <ContentsPage userInfo={userInfo} photos={photos} getPhotos={getPhotos} LogOutHandler={LogOutHandler} />
+
+              <ContentsPage LogOutHandler={LogOutHandler} redirectToMyPage={redirectToMyPage} />
+
             }
           />
         </Switch>

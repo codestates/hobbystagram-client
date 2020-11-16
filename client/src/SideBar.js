@@ -7,6 +7,7 @@ const height = 300;
 const borderStyle = "2px dotted #000";
 
 
+
 const tags = [
   {
     label: 'tag',
@@ -31,6 +32,7 @@ const tags = [
 ]
 function SideBar({ getPhotos }) {
   // image drag & drop 의 state
+
   const [data, setData] = useState(false);
   const [err, setErr] = useState(false);
   
