@@ -112,28 +112,29 @@ function MyPage() {
             value={oldPassword} 
             onChange={(e) => setOldPassword(e.target.value)} 
             type="password" 
-            placeholder="현재 password" />
-          
+            placeholder="현재 password" 
+          />
           <input 
             className="newpass"
             value={newPassword} 
             onChange={(e) => setNewPassword(e.target.value)} 
             type="password" 
-            placeholder="변경할 password" />
-          
+            placeholder="변경할 password" 
+          />
           <input 
             className="nickname"
             value={nickname} 
             onChange={(e) => setNickname(e.target.value)} 
-            type="text" placeholder="변경할 nickname" />
+            type="text" placeholder="변경할 nickname" 
+          />
           <button className="checknick" onClick={() => checkNickInfo()}>확인</button>
           {/* <input 
             type="file" 
             style={{display: 'none'}}
             accept="image/png, image/jpeg, image/gif"
-            onChange={handleImageChange} /> */}
-
-            {/* drag & drop 구역 */}
+            onChange={handleImageChange} 
+          /> */}
+          {/* drag & drop 구역 */}
           <div className="image">
             {err && <p>{err}</p>}
               <div
@@ -142,10 +143,10 @@ function MyPage() {
                 onDragOver={e => onDragOver(e)}
               >
               {data && <img style={dropAreaImageStyle} src={data} />}
-               {/* +업로드할 사진을 drag & drop 으로 올려 주세요 */}
+              {/* +업로드할 사진을 drag & drop 으로 올려 주세요 */}
             </div>
             <div className="button-wrapper">
-            {data && <button onClick={() => setData(false)}>Remove</button>}
+              {data && <button onClick={() => setData(false)}>Remove</button>}
             </div>
           </div>
 
