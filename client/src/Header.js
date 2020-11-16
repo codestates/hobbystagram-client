@@ -5,13 +5,12 @@ import './Header.css';
 function Header({ userInfo, LogOutHandler }) {
     return (
         <div className="header">
-                {/* {userInfo.nickname}  */}
+            {/* {userInfo.nickname}  */}
             <h3>nickname 님의 hobbystagram 입니다.</h3>
             <a className="mypage-link">
-            <Link to="/mypage">마이페이지</Link>
+                <Link to="/mypage">마이페이지</Link>
             </a>
-            <button onClick={() => LogOutHandler()}>로그아웃</button>
-            
+            <button onClick={() => LogOutHandler()}>로그아웃</button>  
         </div>
     )
 }

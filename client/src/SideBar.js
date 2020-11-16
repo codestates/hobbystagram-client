@@ -1,12 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 
-
 const width = 300;
 const height = 300;
 const borderStyle = "2px dotted #000";
-
-
 
 const tags = [
   {

@@ -2,6 +2,7 @@ import React, { useState, useEffect }  from 'react';
 // import { withRouter } from "react-router-dom";
 // import axios from "axios";
 // const fetch = require('node-fetch');
+
 import Header from './Header';
 import SideBar from './SideBar';
 import ContentsPageEntry from './ContentsPageEntry';
@@ -97,7 +98,6 @@ function ContentsPage({ LogOutHandler, redirectToMyPage }) {
 
     return (
         <div className="contentspage">
-            
             <div className="header">
                 <Header />
             </div>
@@ -106,7 +106,6 @@ function ContentsPage({ LogOutHandler, redirectToMyPage }) {
                 <h1>사진 찾기</h1>
             </div>
             <div className="contents" >
-
                 {photos.map(photo => 
                     <ContentsPageEntry key={photo.id} photo={photo.path} />
                     // 실제 photo가 가지고 있는 속성들에는 무엇 무엇이 있는가?
