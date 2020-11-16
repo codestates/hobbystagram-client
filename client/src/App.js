@@ -12,6 +12,8 @@ import ContentsPage from './ContentsPage';
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
+  const [photos, setPhotos] = useState(null);
+  // const [photo, setPhoto] = useState(null);
 
   const history = useHistory();
 
@@ -88,6 +90,24 @@ function App() {
   //   setPhoto(e.target.value) // ?
   // }
 
+  const getPhotos = () => {
+    // axios
+    //   .get('http://34.64.248.85:8080/photo/?_limit=12', { // 엔드 포인트 확인 // 한번에 12개의 사진을 받아오고 싶다(최신순)
+    //     responseType: 'arraybuffer'
+    //   })
+    //   .then(res => {
+    //     Buffer.from(res.data, 'binary').toString('base64') // 사진별로 분리해주지 않아도 되는가?
+    //   })
+    //   .then((photos) => {
+    //     setPhotos(photos)
+    //     history.push('/contentspage')
+    //   })
+  }
+
+  // const handlePhotoClick = (e) => {
+  //   setPhoto(e.target.value) // ?
+  // }
+
   return (
     <div>
         <Route 
@@ -121,7 +141,9 @@ function App() {
           <Route
             path="/contentspage"
             render={() =>
+
               <ContentsPage LogOutHandler={LogOutHandler} redirectToMyPage={redirectToMyPage} />
+
             }
           />
         </Switch>

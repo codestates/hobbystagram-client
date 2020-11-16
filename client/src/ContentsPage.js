@@ -94,13 +94,19 @@ function ContentsPage({ LogOutHandler, redirectToMyPage }) {
     //     setIsModalOpen(false)
     // }
     
+
     return (
-        <div>
+        <div className="contentspage">
+            
+            <div className="header">
+                <Header userInfo={userInfo} LogOutHandler={LogOutHandler} />
+            </div>
             <div className="sidebar">
-                <SideBar />
+                <SideBar getPhotos={getPhotos} />
                 <h1>사진 찾기</h1>
             </div>
             <div className="contents" >
+
                 {photos.map(photo => 
                     <ContentsPageEntry key={photo.id} photo={photo.path} />
                     // 실제 photo가 가지고 있는 속성들에는 무엇 무엇이 있는가?
@@ -115,6 +121,7 @@ function ContentsPage({ LogOutHandler, redirectToMyPage }) {
         </div>
     )
 }
+
 
 export default ContentsPage; 
 // withRouter로 감싸면 규칙에서 벗어나 Link등을 자유로이 쓸 수 있다(부모로부터 Router 속성 물려 받음) // 사용법 확인

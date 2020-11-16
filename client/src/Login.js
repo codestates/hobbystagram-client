@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link, withRouter } from "react-router-dom";
+import './Login.css';
 
 function Login({ LoginSuccess }) {
   const [email, setEmail] = useState("");
@@ -30,32 +32,42 @@ function Login({ LoginSuccess }) {
   }
 
   return (
-    <div>
+    <div className="login">
       <div className="ui form">
         <div className="field">
-          <label>Login</label>
-          <br />
           <input 
+            className="email"
             value={email} 
             onChange={(e) => setEmail(e.target.value)} 
             type="text"
             placeholder="email"
           />
-          <br />
           <input
+            className="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             type="password"
             placeholder="password"
           />  
-          <button onClick={() => logInHandler()}>Log In</button>
-          <div>
-            <h3>회원이 아니신가요?</h3>
+          <button className="loginbutton" onClick={() => logInHandler()}>로그인</button>
+          <div className="signup-link">
+            <a>
+              <Link to='/signup'>
+              <h3>회원이 아니신가요?</h3>
+              </Link>
+              </a>
+          </div>
+          <div className="social-link">
+            <a>
+            <Link to=''>
+              <h3>/소셜 로그인</h3>
+              </Link>
+            </a>
           </div>
         </div>
-      </div>
+    </div>
     </div>
   );
 }
 
-export default Login;
+export default withRouter(Login);
