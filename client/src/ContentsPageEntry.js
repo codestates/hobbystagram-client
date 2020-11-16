@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-
 import ContentDetail from './ContentDetail';
+import './ContentsPageEntry.css';
 
 // 실행해 보기
 
@@ -32,7 +32,7 @@ function ContentsPageEntry({ photo }) {
         //      : null}
         // </React.Fragment>
       
-        <div>
+        <div className="images">
             <img
                 className="photo"
                 src={photo}

@@ -1,4 +1,4 @@
-.contentspage {
+/* .contentspage {
     display: grid;
     margin: 20px;
     grid-template-columns: 25% 75%;
@@ -12,7 +12,10 @@
 }
 .sidebar {
     grid-area: aside;
-}
+} */
 .contents {
-    grid-area: main;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow-x: auto;
 }
