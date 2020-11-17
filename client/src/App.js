@@ -124,7 +124,7 @@ function App() {
             path="/contentspage"
             render={() =>
 
-              <ContentsPage LogOutHandler={LogOutHandler} redirectToMyPage={redirectToMyPage} />
+              <ContentsPage userInfo={userInfo} LogOutHandler={LogOutHandler} redirectToMyPage={redirectToMyPage} />
 
             }
           />

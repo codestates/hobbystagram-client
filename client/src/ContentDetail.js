@@ -3,7 +3,7 @@ import React from 'react';
 import Comments from './Comments';
 import Likes from './Likes';
 
-function ContentDetail({ photo, handlePhotoModal }) { // 모달창 내부 속성
+function ContentDetail({ photo, userInfo, handlePhotoModal }) { // 모달창 내부 속성
     return(
         <div>
             <img
@@ -14,7 +14,7 @@ function ContentDetail({ photo, handlePhotoModal }) { // 모달창 내부 속성
             />
             {/* 좋아요 기능 <-> 연동
             photo 삭제 및 목록 새로고침 기능 <-> 연동 */}
-            <Likes />
+            <Likes photo={photo} userInfo={userInfo} />
             <Comments />
         </div>
     )

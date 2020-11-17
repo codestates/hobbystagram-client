@@ -12,6 +12,7 @@ function Login({ LoginSuccess }) {
       // 둘 다 입력이 되어있다면 서버에 로그인 정보 요청
       // 응답을 받아서 로그인 유저 정보를 업데이트하거나
       // 에러 메시지를 띄움
+
     // if(email === "" || password === "") {
     //     alert("회원 정보를 입력해 주세요")
     // } else {
@@ -29,7 +30,6 @@ function Login({ LoginSuccess }) {
         // }
         // alert("회원 정보를 다시 확인해 주세요")
    // }
-
   }
 
   return (
@@ -61,7 +61,7 @@ function Login({ LoginSuccess }) {
           <div className="social-link">
             <a>
               <Link to=''>
-              <h3>/소셜 로그인</h3>
+                <h3>소셜 로그인</h3>
               </Link>
             </a>
           </div>
