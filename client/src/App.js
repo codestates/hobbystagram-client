@@ -24,12 +24,8 @@ function App() {
   const LoginSuccess = (user, token) => {
     console.log('token', token);
     setIsLoggedIn(true);
-    setUserInfo(user, () => {
-      console.log(user)
-    });
-    setToken(token, () => {
-      console.log(token)
-    });
+    setUserInfo(user);
+    setToken(token);
     history.push('/contentspage')
 
     // authedAxios

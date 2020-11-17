@@ -13,6 +13,7 @@ import './SideBar.css';
 
 function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
     console.log(userInfo);
+    console.log(token)
     const examplePhotos = [ // http는 크롬에서 안 뜸
         {
             id : 1, 
@@ -81,8 +82,10 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
     useEffect(() => { // componentDidMount()와 비슷한 역할
         // getPhotos()
         const axiosPhotos = async () => {
-            const res = await axios.get(examplePhotos); // url // axios 변수 설정으로 url을 넣을 수도 있다
-            setPhotos(examplePhotos); // 임시
+            const authedAxios = axios.create({ headers: { Authorization: `${token}`}});
+            const res = await authedAxios.get('http://34.64.248.85:8080/content') // url // axios 변수 설정으로 url을 넣을 수도 있다
+            console.log(res.data)
+            setPhotos(res.data); // 임시
             // console.log(res) // console.log("포토 확인", res)
         }
         axiosPhotos()
@@ -110,7 +113,7 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
             </div>
             <div className="contents" >
                 {photos.map(photo => 
-                    <ContentsPageEntry key={photo.id} photo={photo.path} userInfo={userInfo} />
+                    <ContentsPageEntry key={photo.id} photo={photo.photo} userInfo={userInfo} />
                     // 실제 photo가 가지고 있는 속성들에는 무엇 무엇이 있는가?
                 )}
             </div>
