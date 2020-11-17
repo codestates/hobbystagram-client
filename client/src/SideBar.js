@@ -30,10 +30,11 @@ const tags = [
     value: "ki",
   },
 ];
-function SideBar({ getPhotos }) {
+
+function SideBar({ getPhotos, token, onUpdate }) {
   // image drag & drop 의 state
 
-  const [data, setData] = useState(false);
+  const [data, setData] = useState('');
   const [err, setErr] = useState(false);
 
   // toggle button 안에 들어갈 내용들(options)
@@ -50,20 +51,25 @@ function SideBar({ getPhotos }) {
     borderStyle: borderStyle,
     borderRadius: borderRadius
   };
+
   const onDrop = (e) => {
     e.preventDefault();
+
     const {
       dataTransfer: { files },
     } = e;
     console.log("Files: ", files);
+
     const { length } = files;
     const reader = new FileReader();
     if (length === 0) {
       return false;
     }
+
     const fileTypes = ["image/jpeg", "image/jpg", "image/png"];
     const { size, type } = files[0];
     setData(false);
+
     if (!fileTypes.includes(type)) {
       setErr("File format must be either png or jpg");
       return false;
@@ -76,9 +82,14 @@ function SideBar({ getPhotos }) {
 
     reader.readAsDataURL(files[0]);
     reader.onload = (loadEvt) => {
-      setData(loadEvt.target.result);
+      console.log(loadEvt.target.result) // base64
     };
+    reader.onloadend = (loadEvt) => {
+      console.log('end', loadEvt.target.result)
+      setData(loadEvt.target.result);
+    }
   };
+
   const onDragStart = (e) => {
     e.preventDefault();
   };
@@ -87,15 +98,27 @@ function SideBar({ getPhotos }) {
   };
 
   // {/* 올려놓은 사진과 선택한 태그를 자료로 이미지 업로드하는 함수 */}
-  const handleImageUpload = async () => {
+  const handleImageUpload = () => {
+    const authedAxios = axios.create(
+      { headers: { 
+        Authorization: `${token}`
+      }}
+    );
     const formData = new FormData();
-    formData.append("file", data);
-    formData.append("tag", tag);
-
-    const res = await axios.post("http://34.64.248.85:8080/photo", formData);
-
-    console.log(res);
-    setData(false);
+      
+    fetch(data) // fetch
+    .then(res => res.blob())
+    .then(_data => {
+      console.log(_data)
+      formData.append("img", _data, 'temp.jpg'); // 태그도 추가하기
+      formData.append()
+      console.log(formData)
+      authedAxios.post("http://34.64.248.85:8080/content", formData)
+      .then((res) => {
+        console.log(res);
+        onUpdate(); // 사진 업로드 시 바로 추가(순서 변경?)
+      })
+    })
   };
 
   return (
@@ -111,7 +134,6 @@ function SideBar({ getPhotos }) {
         </div>
         {/* <div className="button-wrapper">{ */}
         {/* data &&  */}
-        
         {/* }</div> */}
       </div>
       <button className="remove-button" onClick={() => setData(false)}>Remove</button>

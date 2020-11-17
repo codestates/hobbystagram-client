@@ -19,7 +19,11 @@ function App() {
 
   const history = useHistory();
   
-  const authedAxios = axios.create({ headers: { Authorization: `${token}`}});
+  const authedAxios = axios.create(
+    { headers: { 
+      Authorization: `${token}`
+    }}
+  );
   
   const LoginSuccess = (user, token) => {
     console.log('token', token);
