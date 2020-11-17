@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
-import './Login.css';
+import './Login_original.css';
 
 function Login({ LoginSuccess }) {
   const [email, setEmail] = useState("");
@@ -38,8 +38,8 @@ function Login({ LoginSuccess }) {
   }
 
   return (
-    <div className="login">
-      <div className="ui form">
+    <div className="login"> 
+      {/* <div className="ui form"> */}
         <div className="field">
           <input 
             className="email"
@@ -71,8 +71,8 @@ function Login({ LoginSuccess }) {
             </a>
           </div>
         </div>
-      </div>
-    </div>
+      {/* </div>  */}
+    </div> 
   );
 }
 

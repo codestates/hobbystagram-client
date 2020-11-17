@@ -11,6 +11,9 @@
     font-size: 1rem;
     display: inline-block;
     vertical-align: middle;
+    padding-right: 20rem;
+    /* position: relative;
+    right: 22.7rem; */
 }
 .mypage-link a {
     text-decoration: none;
