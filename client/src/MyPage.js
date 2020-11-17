@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, withRouter, Link } from "react-router-dom";
 import axios from 'axios';
 import './MyPage.css';
 
@@ -8,7 +8,8 @@ const height = '8.75rem';
 const borderStyle = "0.1px solid rgb(44, 174, 102)";
 const borderRadius = "6px";
 
-function MyPage() {
+function MyPage({ userInfo, token}) {
+  
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [nickname, setNickname] = useState("");
@@ -16,33 +17,42 @@ function MyPage() {
   // 사진 drag & drop 을 위한 state
   const [data, setData] = useState(false);
   const [err, setErr] = useState(false);
+
+  const history = useHistory();
   
-//   아래 함수 수정해야 함
-  const userInfoHandler = () => {
-    axios.post('/account/change', {
-        oldPassword: oldPassword,
+  const userInfoHandler = async () => {
+    const response = await axios.post('http://34.64.248.85:8080/user/info', {
+      password: oldPassword,
+  }, {
+    // 여기에 토큰 넣기
+  })
+    if(response.status === 200) {
+      axios.post('http://34.64.248.85:8080/user/change', {
+        password: newPassword,
         nickname: nickname
-    })
-    .then(res => {
+      })
+      .then(res => {
         if(res.status === 200) {
-            alert("회원 정보가 수정되었습니다.")
+          alert("회원 정보가 수정되었습니다.")
+          history.push('/contentspage')
         }
-    })
+      })
+    }
   }
 
-  const checkNickInfo = () => {
-    axios.post('/account/change', {
-        nickname: nickname
-    })
-    .then(res => {
-        if(res.status === 200) {
-            alert("사용 가능한 닉네임입니다.")
-        }
-    })
-    .catch((error) => {
-        alert("이미 사용중인 닉네임입니다.")
-    })
-  }
+  // const checkNickInfo = () => {
+  //   axios.post('http://34.64.248.85:8080/user/info', {
+  //       nickname: nickname
+  //   })
+  //   .then(res => {
+  //       if(res.status === 200) {
+  //           alert("사용 가능한 닉네임입니다.")
+  //       }
+  //   })
+  //   .catch((error) => {
+  //       alert("이미 사용중인 닉네임입니다.")
+  //   })
+  // }
 
   // const handleImageChange = (e) => {
   //   setImage(e.target.files[0])
@@ -145,7 +155,7 @@ function MyPage() {
             onChange={(e) => setNickname(e.target.value)} 
             type="text" placeholder="변경할 nickname" 
           />
-          <button className="checknick" onClick={() => checkNickInfo()}>확인</button>
+          {/* <button className="checknick" onClick={() => checkNickInfo()}>확인</button> */}
           {/* <input 
             type="file" 
             style={{display: 'none'}}
@@ -155,11 +165,17 @@ function MyPage() {
           
           
           <button className="updateuser" onClick={() => userInfoHandler()}>정보 수정</button>
-          
+          <div className="contentspage-link">
+            <a>
+              <Link to='/contentspage'>
+                <h3>다음에 변경할래요</h3>
+              </Link>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-export default MyPage;
+export default withRouter(MyPage);

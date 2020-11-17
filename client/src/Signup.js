@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { Link, withRouter, useHistory } from "react-router-dom";
 import './Signup.css';
-import ModalSignUp from "./ModalSignUp";
+
 
 const width = 'grid-column: 1 / 3';
 const height = 'grid-row: 1 / 6';
@@ -30,41 +30,43 @@ function SignUp() {
         console.log(res);
         console.log(res.request);
         if(res.status === 200) {
+          alert("회원 가입이 완료되었습니다.")
           history.push('/');
-        //  <ModalSignUp /> 
+        }else if(res.status === 409) {
+          alert("가입 정보를 다시 확인해 주세요")
         }
     })
   }
 
-  const checkEmailInfo = () => {
-    axios.post('http://34.64.248.85:8080/user/signup', {
-        email: email
-    })
-    .then(res => {
-        if(res.status === 409) {
-            alert("이메일 계정을 다시 확인해 주세요")
-        } else {
-          console.log(res);
-        }
-    })
-    .catch((error) => {
-        alert("이메일 계정을 다시 확인해 주세요")
-    })
-  }
+  // const checkEmailInfo = () => {
+  //   axios.post('http://34.64.248.85:8080/user/signup', {
+  //       email: email
+  //   })
+  //   .then(res => {
+  //       if(res.status === 409) {
+  //           alert("이메일 계정을 다시 확인해 주세요")
+  //       } else {
+  //         console.log(res);
+  //       }
+  //   })
+  //   .catch((error) => {
+  //       alert("이메일 계정을 다시 확인해 주세요")
+  //   })
+  // }
 
-  const checkNickInfo = () => {
-    axios.post('http://34.64.248.85:8080/user/signup', {
-        nickname: nickname
-    })
-    .then(res => {
-        if(res.status === 200) {
-            alert("사용 가능한 닉네임입니다.")
-        }
-    })
-    .catch((error) => {
-        alert("이미 사용중인 닉네임입니다.")
-    })
-  }
+  // const checkNickInfo = () => {
+  //   axios.post('http://34.64.248.85:8080/user/signup', {
+  //       nickname: nickname
+  //   })
+  //   .then(res => {
+  //       if(res.status === 200) {
+  //           alert("사용 가능한 닉네임입니다.")
+  //       }
+  //   })
+  //   .catch((error) => {
+  //       alert("이미 사용중인 닉네임입니다.")
+  //   })
+  // }
 
   // drag & drop 을 구현하기 위한 함수
   const dropAreaImageStyle = {
@@ -146,7 +148,7 @@ function SignUp() {
             type="text" 
             placeholder="email"
           />
-          <button className="check-email" onClick={() => checkEmailInfo()}>확인</button>  
+          {/* <button className="check-email" onClick={() => checkEmailInfo()}>확인</button>   */}
         
           <input 
             className="password"
@@ -163,7 +165,7 @@ function SignUp() {
             type="text" 
             placeholder="nickname" 
           />
-          <button className="check-nick" onClick={() => checkNickInfo()}>확인</button> 
+          {/* <button className="check-nick" onClick={() => checkNickInfo()}>확인</button>  */}
           {/* <input type="file" onChange={handleImageChange} /> */}
           {/* drag & drop 구역 */}
           

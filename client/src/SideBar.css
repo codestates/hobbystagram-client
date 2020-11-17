@@ -40,6 +40,16 @@
     font-weight: bolder;
     font-size: 1.2rem;
 }
+.uploadtag > select > .arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+.uploadtag > select > .down {
+    transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
 .upload-button {
     border: 0.5px solid rgb(44, 174, 102);
     background-color: rgb(252, 246, 245);

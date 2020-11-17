@@ -119,6 +119,7 @@ function SideBar({ getPhotos }) {
       {/* 토글 버튼 구역 */}
       <form className="uploadtag">
         <select>
+          <i className="arrow down"></i>
           {tags.map((tag) => (
             <option key={tag.value} value={tag.label} onChange={setTag}>
               {tag.label}
