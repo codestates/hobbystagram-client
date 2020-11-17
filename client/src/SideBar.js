@@ -89,7 +89,7 @@ function SideBar({ getPhotos }) {
     const formData = new FormData();
     formData.append("file", data);
     formData.append("tag", tag);
-    const res = await axios.post("/signup/avatar", formData);
+    const res = await axios.post("http://34.64.248.85:8080/content", formData);
     console.log(res);
   };
 
