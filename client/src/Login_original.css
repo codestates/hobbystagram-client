@@ -1,5 +1,4 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap'); */
-
 * {
     background-color: rgb(252, 246, 245);
     text-align: center;
@@ -8,14 +7,14 @@
 
 .field {
     position: absolute;
-    top: 40%;
+    top: 30%;
     left: 40%;
     display: grid;
-    width: 30rem;
-    height: 18rem;
+    width: 23rem;
+    height: 14rem;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    grid-gap: 3px 5px;
+    grid-gap: 5px 5px;
 }
 
 .email {
@@ -24,7 +23,7 @@
     text-align: justify;
     border-radius: 6px;
     grid-column: 1 / 5;
-    grid-row: 1 / 3;
+    grid-row: 1 / 2;
 }
 
 .email::placeholder {
@@ -38,7 +37,7 @@
     text-align: justify;
     border-radius: 6px;
     grid-column: 1 / 5;
-    grid-row: 3 / 5;
+    grid-row: 2 / 3;
 }
 
 .password::placeholder {
@@ -46,7 +45,6 @@
     font-weight: bolder;
     font-size: 1rem;
 }
-
 .loginbutton {
     border: 0;
     background-color: rgb(44, 174, 102);
@@ -55,19 +53,19 @@
     font-weight: bolder;
     font-size: 1.3rem;
     grid-column: 5 / 7;
-    grid-row: 1 / 5;
+    grid-row: 1 / 3;
 }
 
 .signup-link {
     color: rgb(44, 174, 102);
-    grid-column: 1 / 4;
-    grid-row: 5 / 7;
+    grid-column: 1 / 5;
+    grid-row: 3 / 4;
 }
 
 .social-link {
     color: rgb(44, 174, 102);
-    grid-column: 4 / 7;
-    grid-row: 5 / 7;
+    grid-column: 5 / 7;
+    grid-row: 3 / 4;
 }
 
 .signup-link a {
