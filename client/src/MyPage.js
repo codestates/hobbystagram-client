@@ -3,9 +3,10 @@ import { useHistory } from "react-router-dom";
 import axios from 'axios';
 import './MyPage.css';
 
-const width = 100;
-const height = 100;
-const borderStyle = "2px dotted #000";
+const width = '7.65rem';
+const height = '8.75rem';
+const borderStyle = "0.1px solid rgb(44, 174, 102)";
+const borderRadius = "6px";
 
 function MyPage() {
   const [oldPassword, setOldPassword] = useState("");
@@ -62,7 +63,8 @@ function MyPage() {
   
   const dropAreaStyle = {
     ...dropAreaImageStyle,
-    border: borderStyle
+    borderStyle: borderStyle,
+    borderRadius: borderRadius
   }
   const onDrop = e => {
     e.preventDefault();
@@ -106,7 +108,23 @@ function MyPage() {
     <div>
       <div className="ui form">
         <div className="field">
+          {/* drag & drop 구역 */}
+          <div className="image">
+            {err && <p>{err}</p>}
+            <div 
+            style={dropAreaStyle}
+            onDrop={(e) => onDrop(e)} onDragOver={(e) => onDragOver(e)}>
+            {data && <img style={dropAreaImageStyle} src={data} />}
           
+            </div>
+            {/* <div className="button-wrapper">{ */}
+            {/* data &&  */}
+        
+            {/* }</div> */}
+            </div>
+          <button className="remove-button" onClick={() => setData(false)}>Remove</button>
+
+          <button className="avatarup" onClick={handleImageUpload}>프로필</button>
           <input 
           className="oldpass"
             value={oldPassword} 
@@ -134,23 +152,7 @@ function MyPage() {
             accept="image/png, image/jpeg, image/gif"
             onChange={handleImageChange} 
           /> */}
-          {/* drag & drop 구역 */}
-          <div className="image">
-            {err && <p>{err}</p>}
-              <div
-                // style={dropAreaStyle}
-                onDrop={e => onDrop(e)}
-                onDragOver={e => onDragOver(e)}
-              >
-              {data && <img style={dropAreaImageStyle} src={data} />}
-              {/* +업로드할 사진을 drag & drop 으로 올려 주세요 */}
-            </div>
-            <div className="button-wrapper">
-              {data && <button onClick={() => setData(false)}>Remove</button>}
-            </div>
-          </div>
-
-          <button className="avatarup" onClick={handleImageUpload}>프로필 사진 변경</button>
+          
           
           <button className="updateuser" onClick={() => userInfoHandler()}>정보 수정</button>
           

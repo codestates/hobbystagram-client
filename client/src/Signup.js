@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, useHistory } from "react-router-dom";
 import './Signup.css';
+import ModalSignUp from "./ModalSignUp";
 
-const width = 100;
-const height = 100;
-const borderStyle = "2px dotted #000";
+const width = 'grid-column: 1 / 3';
+const height = 'grid-row: 1 / 6';
+const borderStyle = "1px solid rgb(44, 174, 102)";
+const borderRadius = "6px";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -16,6 +18,8 @@ function SignUp() {
   const [data, setData] = useState(false);
   const [err, setErr] = useState(false);
 
+  const history = useHistory();
+
   const signUpHandler = () => {
     axios.post('http://34.64.248.85:8080/user/signup', {
         email: email,
@@ -24,16 +28,23 @@ function SignUp() {
     })
     .then(res => {
         console.log(res);
+        console.log(res.request);
+        if(res.status === 200) {
+          history.push('/');
+        //  <ModalSignUp /> 
+        }
     })
   }
 
   const checkEmailInfo = () => {
-    axios.post('/signup', {
+    axios.post('http://34.64.248.85:8080/user/signup', {
         email: email
     })
     .then(res => {
-        if(res.status === 200) {
-            alert("사용 가능한 계정입니다.")
+        if(res.status === 409) {
+            alert("이메일 계정을 다시 확인해 주세요")
+        } else {
+          console.log(res);
         }
     })
     .catch((error) => {
@@ -42,7 +53,7 @@ function SignUp() {
   }
 
   const checkNickInfo = () => {
-    axios.post('/signup', {
+    axios.post('http://34.64.248.85:8080/user/signup', {
         nickname: nickname
     })
     .then(res => {
@@ -63,7 +74,8 @@ function SignUp() {
   
   const dropAreaStyle = {
     ...dropAreaImageStyle,
-    border: borderStyle
+    borderStyle: borderStyle,
+    borderRadius: borderRadius
   }
   const onDrop = e => {
     e.preventDefault();
@@ -105,7 +117,7 @@ function SignUp() {
   const handleImageUpload = async () => {
     const formData = new FormData();
     formData.append('file', data)
-    const res = await axios.post('/signup/avatar', formData);
+    const res = await axios.post('http://34.64.248.85:8080/user/signup', formData);
     console.log(res);
 }
 
@@ -113,6 +125,20 @@ function SignUp() {
     <div>
       <div className="ui form">
         <div className="field">
+        <div className="image">
+        {err && <p>{err}</p>}
+        <div 
+        style={dropAreaStyle}
+        onDrop={(e) => onDrop(e)} onDragOver={(e) => onDragOver(e)}>
+          {data && <img style={dropAreaImageStyle} src={data} />}
+          
+        </div>
+        {/* <div className="button-wrapper">{ */}
+        {/* data &&  */}
+        
+        {/* }</div> */}
+      </div>
+      <button className="remove-button" onClick={() => setData(false)}>Remove</button>
           <input 
             className="email"
             value={email} 
@@ -140,23 +166,10 @@ function SignUp() {
           <button className="check-nick" onClick={() => checkNickInfo()}>확인</button> 
           {/* <input type="file" onChange={handleImageChange} /> */}
           {/* drag & drop 구역 */}
-          <div className="image">
-            {err && <p>{err}</p>}
-              <div
-                // style={dropAreaStyle}
-                onDrop={e => onDrop(e)}
-                onDragOver={e => onDragOver(e)}
-              >
-              {data && <img style={dropAreaImageStyle} src={data} />}
-              
-            </div>
-            <div className="button-wrapper">
-            {data && <button onClick={() => setData(false)}>Remove</button>}
-            </div>
-          </div>
+          
 
           
-          <button className="avatarup" onClick={() => handleImageUpload}>프로필 사진 등록</button>
+          <button className="avatarup" onClick={() => handleImageUpload}>프로필</button>
           
           <button className="signup" onClick={() => signUpHandler()}>회원 가입</button>
           <div className="login-link">
