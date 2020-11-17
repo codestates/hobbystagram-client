@@ -19,13 +19,19 @@ function App() {
 
   const history = useHistory();
   
-  const authedAxios = axios.create({ headers: { Authorization: `${token}`}});
+  const authedAxios = axios.create(
+    { headers: { 
+      Authorization: `${token}`
+    }}
+  );
+  
   const LoginSuccess = (user, token) => {
     console.log('token', token);
     setIsLoggedIn(true);
     setUserInfo(user);
     setToken(token);
     history.push('/contentspage')
+
     // authedAxios
     //   .get('http://34.64.248.85:8080/user/signin') // 어느 엔드 포인트에서 post된 유저 정보(입력 받은 email, password 값)를 받아와야 하는가?
     //   .then(res => {
