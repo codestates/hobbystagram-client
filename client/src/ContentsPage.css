@@ -1,0 +1,21 @@
+/* .contentspage {
+    display: grid;
+    margin: 20px;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 4rem auto;
+    grid-gap: 0.5rem 1.5rem;
+    grid-template-areas: "header header"
+                         "aside main";
+}
+.header {
+    grid-area: header;
+}
+.sidebar {
+    grid-area: aside;
+} */
+.contents {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    overflow-x: auto;
+}
