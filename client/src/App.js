@@ -134,6 +134,7 @@ function App() {
             path="/contentspage"
             render={() =>
                 <ContentsPage userInfo={userInfo} token={token} LogOutHandler={LogOutHandler} redirectToMyPage={redirectToMyPage} />
+
             }
           />
         </Switch>

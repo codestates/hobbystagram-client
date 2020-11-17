@@ -10,6 +10,7 @@ import './ContentsPage.css';
 import './SideBar.css';
 // import examplePhotos from './photos.json';
 
+
 function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
     console.log(userInfo);
     const examplePhotos = [ // http는 크롬에서 안 뜸
@@ -109,7 +110,7 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
             </div>
             <div className="contents" >
                 {photos.map(photo => 
-                    <ContentsPageEntry key={photo.id} photo={photo.path} />
+                    <ContentsPageEntry key={photo.id} photo={photo.path} userInfo={userInfo} />
                     // 실제 photo가 가지고 있는 속성들에는 무엇 무엇이 있는가?
                 )}
             </div>

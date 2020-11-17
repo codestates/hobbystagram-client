@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+
 import ContentDetail from './ContentDetail';
 import './ContentsPageEntry.css';
 
 // 실행해 보기
 
-function ContentsPageEntry({ photo }) {
+function ContentsPageEntry({ photo, userInfo }) {
     console.log(photo) // path를 받아 옴
 
     const [isOpen, setIsOpen] = useState(false);
@@ -47,7 +48,7 @@ function ContentsPageEntry({ photo }) {
                     // onClick={handlePhotoModal}
                 >
                     <button onClick={handlePhotoModal}>창 닫기</button>
-                    <ContentDetail photo={photo} handlePhotoModal={handlePhotoModal}/>
+                    <ContentDetail photo={photo} userInfo={userInfo} handlePhotoModal={handlePhotoModal}/>
                 </dialog>
             )}
         </div>
