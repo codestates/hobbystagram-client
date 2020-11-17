@@ -1,5 +1,5 @@
 import React, { useState, useEffect }  from 'react';
-// import { withRouter } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 // import axios from "axios";
 // const fetch = require('node-fetch');
 
@@ -10,7 +10,9 @@ import './ContentsPage.css';
 import './SideBar.css';
 // import examplePhotos from './photos.json';
 
-function ContentsPage({ userInfo, LogOutHandler, redirectToMyPage }) {
+
+function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
+    console.log(userInfo);
     const examplePhotos = [ // http는 크롬에서 안 뜸
         {
             id : 1, 
@@ -98,10 +100,10 @@ function ContentsPage({ userInfo, LogOutHandler, redirectToMyPage }) {
     // }
     
 
-    return (
+    return userInfo !== null ? (
         <div className="contentspage">
             <div className="header">
-                <Header />
+                <Header userInfo={userInfo} token={token} LogOutHandler={LogOutHandler}/>
             </div>
             <div className="sidebar">
                 <SideBar />
@@ -113,6 +115,8 @@ function ContentsPage({ userInfo, LogOutHandler, redirectToMyPage }) {
                 )}
             </div>
         </div>
+    ) : (
+        <Redirect to='/login' />
     )
 }
 

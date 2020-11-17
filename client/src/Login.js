@@ -13,9 +13,9 @@ function Login({ LoginSuccess }) {
       // 응답을 받아서 로그인 유저 정보를 업데이트하거나
       // 에러 메시지를 띄움
 
-    // if(email === "" || password === "") {
-    //     alert("회원 정보를 입력해 주세요")
-    // } else {
+    if(email === "" || password === "") {
+        alert("회원 정보를 입력해 주세요")
+    } else {
         const res = await axios.post('http://34.64.248.85:8080/user/signin', {
              
                 email: email,
@@ -23,13 +23,19 @@ function Login({ LoginSuccess }) {
             
         });
         console.log('res', res);
+        console.log('res.data', res.config.data);
+        console.log('res.data', res.data.token);
 
-        // if(res) {
-        //     // 유저 정보를 업데이트 해 주는 함수에 데이타 값을 담아 실행
-        //     LoginSuccess(res);
-        // }
-        // alert("회원 정보를 다시 확인해 주세요")
-   // }
+        if(res.status === 200) {
+            // 유저 정보를 업데이트 해 주는 함수에 데이타 값을 담아 실행
+            const user = JSON.parse(res.config.data); 
+            const token = res.data.token; 
+            LoginSuccess(user, token);
+        } else {
+
+          alert("회원 정보를 다시 확인해 주세요")
+        }
+   }
   }
 
   return (

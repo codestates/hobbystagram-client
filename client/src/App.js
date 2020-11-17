@@ -9,29 +9,39 @@ import MyPage from './MyPage';
 import ContentsPage from './ContentsPage';
 // import examplePhotos from './photos.json';
 
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
+  const [token, setToken] = useState(null);
   // const [photos, setPhotos] = useState(null);
   // const [photo, setPhoto] = useState(null);
 
   const history = useHistory();
-
-  const LoginSuccess = () => {
-    axios
-      .get('http://34.64.248.85:8080/signin') // 어느 엔드 포인트에서 post된 유저 정보(입력 받은 email, password 값)를 받아와야 하는가?
-      .then(res => {
-        setIsLoggedIn(isLoggedIn)
-        setUserInfo(res.data) // 입력 받은 email, password 값으로 유저 정보 업데이트 // data로 받아오는게 맞는가?
-        history.push('/contentspage')
-      })
+  
+  const authedAxios = axios.create({ headers: { Authorization: `${token}`}});
+  const LoginSuccess = (user, token) => {
+    console.log('token', token);
+    setIsLoggedIn(true);
+    setUserInfo(user);
+    setToken(token);
+    history.push('/contentspage')
+    // authedAxios
+    //   .get('http://34.64.248.85:8080/user/signin') // 어느 엔드 포인트에서 post된 유저 정보(입력 받은 email, password 값)를 받아와야 하는가?
+    //   .then(res => {
+    //     setIsLoggedIn(true)
+    //     setUserInfo(res.data) // 입력 받은 email, password 값으로 유저 정보 업데이트 // data로 받아오는게 맞는가?
+    //     console.log('res.data', res.data);
+    //     history.push('/contentspage')
+    //   })
   }
   
   const LogOutHandler = () => {
     axios
-      .post('http://34.64.248.85:8080/logout')
+      .post('http://34.64.248.85:8080/user/logout')
       .then(() => {
-        setIsLoggedIn(!isLoggedIn)
+        setIsLoggedIn(!isLoggedIn);
+        setToken(null);
         history.push('/')
       })
   }
@@ -117,14 +127,13 @@ function App() {
           <Route 
             path="/mypage" 
             render={() =>
-              <MyPage userInfo={userInfo} LogOutHandler={LogOutHandler} />
+                <MyPage userInfo={userInfo} token={token}/>
             }
           />
           <Route
             path="/contentspage"
             render={() =>
-
-              <ContentsPage userInfo={userInfo} LogOutHandler={LogOutHandler} redirectToMyPage={redirectToMyPage} />
+                <ContentsPage userInfo={userInfo} token={token} LogOutHandler={LogOutHandler} redirectToMyPage={redirectToMyPage} />
 
             }
           />

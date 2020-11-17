@@ -3,9 +3,10 @@ import axios from "axios";
 // import "./SideBar.css";
 
 
-const width = 300;
-const height = 300;
-const borderStyle = "2px dotted #000";
+const width = 323;
+const height = 247;
+const borderStyle = "1px solid rgb(44, 174, 102)";
+const borderRadius = "6px";
 
 const tags = [
   {
@@ -46,7 +47,8 @@ function SideBar({ getPhotos }) {
 
   const dropAreaStyle = {
     ...dropAreaImageStyle,
-    border: borderStyle,
+    borderStyle: borderStyle,
+    borderRadius: borderRadius
   };
   const onDrop = (e) => {
     e.preventDefault();
@@ -89,8 +91,11 @@ function SideBar({ getPhotos }) {
     const formData = new FormData();
     formData.append("file", data);
     formData.append("tag", tag);
-    const res = await axios.post("http://34.64.248.85:8080/content", formData);
+
+    const res = await axios.post("http://34.64.248.85:8080/photo", formData);
+
     console.log(res);
+    setData(false);
   };
 
   return (
@@ -98,7 +103,9 @@ function SideBar({ getPhotos }) {
       {/* drag & drop 구역 */}
       <div className="image">
         {err && <p>{err}</p>}
-        <div onDrop={(e) => onDrop(e)} onDragOver={(e) => onDragOver(e)}>
+        <div 
+        style={dropAreaStyle}
+        onDrop={(e) => onDrop(e)} onDragOver={(e) => onDragOver(e)}>
           {data && <img style={dropAreaImageStyle} src={data} />}
           
         </div>
