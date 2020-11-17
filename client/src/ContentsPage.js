@@ -1,6 +1,6 @@
 import React, { useState, useEffect }  from 'react';
 import { Redirect } from "react-router-dom";
-// import axios from "axios";
+import axios from "axios";
 // const fetch = require('node-fetch');
 
 import Header from './Header';
@@ -80,8 +80,8 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
 
     useEffect(() => { // componentDidMount()와 비슷한 역할
         // getPhotos()
-        const axiosPhotos = () => {
-            // const res = await axios.get(examplePhotos); // url // axios 변수 설정으로 url을 넣을 수도 있다
+        const axiosPhotos = async () => {
+            const res = await axios.get(examplePhotos); // url // axios 변수 설정으로 url을 넣을 수도 있다
             setPhotos(examplePhotos); // 임시
             // console.log(res) // console.log("포토 확인", res)
         }

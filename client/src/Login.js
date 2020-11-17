@@ -32,7 +32,6 @@ function Login({ LoginSuccess }) {
             const token = res.data.token; 
             LoginSuccess(user, token);
         } else {
-
           alert("회원 정보를 다시 확인해 주세요")
         }
    }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import { Link, withRouter, useHistory } from "react-router-dom";
 import './Signup.css';
-import ModalSignUp from "./ModalSignUp";
+// import ModalSignUp from "./ModalSignUp";
 
 const width = 'grid-column: 1 / 3';
 const height = 'grid-row: 1 / 6';
