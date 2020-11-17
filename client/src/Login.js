@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
-import './Login.css';
+import './Login_original.css';
 
 function Login({ LoginSuccess }) {
   const [email, setEmail] = useState("");
@@ -32,15 +32,14 @@ function Login({ LoginSuccess }) {
             const token = res.data.token; 
             LoginSuccess(user, token);
         } else {
-
           alert("회원 정보를 다시 확인해 주세요")
         }
    }
   }
 
   return (
-    <div className="login">
-      <div className="ui form">
+    <div className="login"> 
+      {/* <div className="ui form"> */}
         <div className="field">
           <input 
             className="email"
@@ -72,8 +71,8 @@ function Login({ LoginSuccess }) {
             </a>
           </div>
         </div>
-      </div>
-    </div>
+      {/* </div>  */}
+    </div> 
   );
 }
 
