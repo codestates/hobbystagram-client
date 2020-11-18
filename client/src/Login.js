@@ -17,10 +17,8 @@ function Login({ LoginSuccess }) {
         alert("회원 정보를 입력해 주세요")
     } else {
         const res = await axios.post('http://34.64.248.85:8080/user/signin', {
-             
                 email: email,
                 password: password
-            
         });
         console.log('res', res);
         console.log('res.data', res.config.data);
@@ -33,14 +31,14 @@ function Login({ LoginSuccess }) {
             LoginSuccess(user, token);
         } else {
           alert("회원 정보를 다시 확인해 주세요")
-        }
-   }
+      }
+    }
   }
 
   return (
-    <div className="login"> 
-      {/* <div className="ui form"> */}
-        <div className="field">
+    <div> 
+      <div className="login">
+        <div className="area">
           <input 
             className="email"
             value={email} 
@@ -56,14 +54,14 @@ function Login({ LoginSuccess }) {
             placeholder="password"
           />  
           <button className="loginbutton" onClick={() => logInHandler()}>로그인</button>
-          <div className="signup-link">
+          <div className="signup__link">
             <a>
               <Link to='/signup'>
                 <h3>회원이 아니신가요?</h3>
               </Link>
             </a>
           </div>
-          <div className="social-link">
+          <div className="social__link">
             <a>
               <Link to=''>
                 <h3>소셜 로그인</h3>
@@ -71,7 +69,7 @@ function Login({ LoginSuccess }) {
             </a>
           </div>
         </div>
-      {/* </div>  */}
+      </div> 
     </div> 
   );
 }
