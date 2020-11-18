@@ -135,13 +135,13 @@ function SignUp() {
         {/* }</div> */}
     </div>
         <button className="remove-button" onClick={() => setData(false)}>Remove</button>
-            <input 
+          <input 
             className="email"
             value={email} 
             onChange={(e) => setEmail(e.target.value)} 
             type="text" 
             placeholder="email"
-            />
+          />
           <input 
             className="password"
             value={password} 
@@ -160,9 +160,7 @@ function SignUp() {
           {/* <input type="file" onChange={handleImageChange} /> */}
           {/* drag & drop 구역 */}
 
-          
           <button className="avatarup" onClick={() => handleImageUpload}>프로필</button>
-          
           <button className="signup" onClick={() => signUpHandler()}>회원 가입</button>
           <div className="login-link">
             <a>
@@ -173,7 +171,6 @@ function SignUp() {
           </div>
         </div>
       </div>
-    </div>
     </div>
     );
 }
