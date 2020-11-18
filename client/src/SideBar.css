@@ -1,4 +1,4 @@
-.sidebar {
+.sidebar__detail {
     margin: 10px;
     display: grid;
     width: 25vw;
@@ -15,7 +15,7 @@
     grid-column: 1 / 3;
     grid-row: 1 / 7;
 }
-.remove-button {
+.removebutton {
     border: 0.5px solid rgb(44, 174, 102);
     background-color: rgb(252, 246, 245);
     border-radius: 6px;
@@ -31,7 +31,7 @@
     border-radius: 6px;
     width: 12.4vw;
     height: 4.9vh;
-    grid-column: 2 / 3;
+    grid-column: 1 / 3;
     grid-row: 7 / 8;
     -webkit-appearance: none; /* 네이티브 외형 감추기 */ 
     -moz-appearance: none; 
@@ -40,17 +40,7 @@
     font-weight: bolder;
     font-size: 1.2rem;
 }
-.uploadtag > select > .arrow {
-    border: solid black;
-    border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-}
-.uploadtag > select > .down {
-    transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-}
-.upload-button {
+.upload__button {
     border: 0.5px solid rgb(44, 174, 102);
     background-color: rgb(252, 246, 245);
     border-radius: 6px;

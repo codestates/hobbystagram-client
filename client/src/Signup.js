@@ -28,7 +28,11 @@ function SignUp() {
           alert("회원 가입이 완료되었습니다.")
           history.push('/');
         }else if(res.status === 409) {
-
+          alert("가입 정보를 다시 확인해 주세요")
+        }
+    })
+  }
+  // const checkEmailInfo = () => {
   //   axios.post('http://34.64.248.85:8080/user/signup', {
   //       email: email
   //   })
@@ -44,6 +48,7 @@ function SignUp() {
   //   })
   // }
 
+  // const checkNickInfo = () => {
   //   axios.post('http://34.64.248.85:8080/user/signup', {
   //       nickname: nickname
   //   })
@@ -133,7 +138,7 @@ function SignUp() {
             onChange={(e) => setEmail(e.target.value)} 
             type="text" 
             placeholder="email"
-
+            />
           <input 
             className="password"
             value={password} 

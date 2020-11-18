@@ -5,7 +5,7 @@ import "./Header.css";
 function Header({ userInfo, token, LogOutHandler }) {
   console.log(userInfo); 
   return (
-    <div className="header">
+    <div className="header__detail">
       <div className="intro">
         <h3>{userInfo.email} 님의 hobbystagram 입니다.</h3>
       </div>
