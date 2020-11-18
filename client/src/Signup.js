@@ -34,7 +34,7 @@ function SignUp() {
     })
   }
 
-  // const checkNickInfo = () => {
+  // const checkEmailInfo = () => {
   //   axios.post('http://34.64.248.85:8080/user/signup', {
   //       email: email
   //   })
@@ -50,6 +50,7 @@ function SignUp() {
   //   })
   // }
 
+  // const checkNickInfo = () => {
   //   axios.post('http://34.64.248.85:8080/user/signup', {
   //       nickname: nickname
   //   })
@@ -134,39 +135,42 @@ function SignUp() {
         {/* }</div> */}
     </div>
         <button className="remove-button" onClick={() => setData(false)}>Remove</button>
-        <input 
-        className="email"
-        value={email} 
-        onChange={(e) => setEmail(e.target.value)} 
-        type="text" 
-        placeholder="email"
-        />
-        {/* <button className="check-email" onClick={() => checkEmailInfo()}>확인</button>   */}
-        <input 
-          className="password"
-          value={password} 
-          onChange={(e) => setPassword(e.target.value)} 
-          type="password" 
-          placeholder="password" 
-        />    
-        <input 
-          className="nickname"
-          value={nickname} 
-          onChange={(e) => setNickname(e.target.value)} 
-          type="text" 
-          placeholder="nickname" 
-        />
-        {/* <button className="check-nick" onClick={() => checkNickInfo()}>확인</button>  */}
-        {/* <input type="file" onChange={handleImageChange} /> */}
-        {/* drag & drop 구역 */}
-        <button className="avatarup" onClick={() => handleImageUpload}>프로필</button>
-        <button className="signup" onClick={() => signUpHandler()}>회원 가입</button>
-        <div className="login-link">
-          <a>
-            <Link to="login">
-              <h3>계정이 이미 있으신가요?</h3>
-            </Link>
-          </a>
+            <input 
+            className="email"
+            value={email} 
+            onChange={(e) => setEmail(e.target.value)} 
+            type="text" 
+            placeholder="email"
+            />
+          <input 
+            className="password"
+            value={password} 
+            onChange={(e) => setPassword(e.target.value)} 
+            type="password" 
+            placeholder="password" 
+          />    
+          <input 
+            className="nickname"
+            value={nickname} 
+            onChange={(e) => setNickname(e.target.value)} 
+            type="text" 
+            placeholder="nickname" 
+          />
+
+          {/* <input type="file" onChange={handleImageChange} /> */}
+          {/* drag & drop 구역 */}
+
+          
+          <button className="avatarup" onClick={() => handleImageUpload}>프로필</button>
+          
+          <button className="signup" onClick={() => signUpHandler()}>회원 가입</button>
+          <div className="login-link">
+            <a>
+              <Link to="login">
+                <h3>계정이 이미 있으신가요?</h3>
+              </Link>
+            </a>
+          </div>
         </div>
       </div>
     </div>

@@ -1,9 +1,9 @@
-/* .contentspage {
+.contentspage {
     display: grid;
     margin: 20px;
-    grid-template-columns: 25% 75%;
-    grid-template-rows: 4rem auto;
-    grid-gap: 0.5rem 1.5rem;
+    grid-template-columns: 15vw 75vw;
+    grid-template-rows: 7vh 83vh;
+    /* grid-gap: 0.5rem 1.5rem; */
     grid-template-areas: "header header"
                          "aside main";
 }
@@ -14,11 +14,16 @@
 
 .sidebar {
     grid-area: aside;
-} */
+}
 
 .contents {
+    grid-area: main;
+    position: relative;
+    top: 3px;
+    left: 230px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     overflow-x: auto;
 }
+

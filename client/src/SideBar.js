@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 // import "./SideBar.css";
 
-const width = 323;
-const height = 247;
+const width = '18rem';
+const height = '17rem';
 const borderStyle = "1px solid rgb(44, 174, 102)";
 const borderRadius = "6px";
 
@@ -21,7 +21,7 @@ const tags = [
     value: "se",
   },
   {
-    label: "Poppy",
+    label: "Puppy",
     value: "po",
   },
   {
@@ -30,7 +30,7 @@ const tags = [
   },
 ];
 
-function SideBar({ getPhotos, token, onUpdate }) {
+function SideBar({ token, getPhotosByTag, setTagForSort, onUpdate }) {
   // image drag & drop 의 state
 
   const [data, setData] = useState('');
@@ -105,24 +105,29 @@ function SideBar({ getPhotos, token, onUpdate }) {
       }}
     );
     const formData = new FormData();
-      
-    fetch(data) // fetch
-    .then(res => res.blob())
-    .then(_data => {
-      console.log(_data)
-      formData.append("img", _data, 'temp.jpg');
-      formData.append("tag", tag) // 수정하기
-      console.log(formData)
-      authedAxios.post("http://34.64.248.85:8080/content", formData)
-      .then(res => {
-        console.log(res);
-        onUpdate(); // 사진 업로드 시 바로 추가(순서 변경?)
+
+    if(data === '') {
+      alert("사진을 선택해 주세요.")
+    }  else {
+      fetch(data) // fetch
+      .then(res => res.blob())
+      .then(_data => {
+        console.log('data :', _data)
+        formData.append("img", _data, 'temp.jpg'); // 태그도 추가하기
+        formData.append("tag", tag)
+        console.log('formData :',formData)
+        authedAxios.post("http://34.64.248.85:8080/content", formData)
+        .then((res) => {
+          console.log(res);
+          onUpdate(); // 사진 업로드 시 바로 추가(순서 변경?)
+          setData("");
+        })
       })
-    })
+    }
   };
 
   return (
-    <div className="sidebar">
+    <div className="sidebar__detail">
       {/* drag & drop 구역 */}
       <div className="image">
         {err && <p>{err}</p>}
@@ -135,11 +140,11 @@ function SideBar({ getPhotos, token, onUpdate }) {
         {/* data &&  */}
         {/* }</div> */}
       </div>
-      <button className="remove-button" onClick={() => setData(false)}>Remove</button>
+      <button className="removebutton" onClick={() => setData(false)}>Remove</button>
       {/* 토글 버튼 구역 */}
       <form className="uploadtag">
         <select>
-          <i className="arrow down"></i>
+          
           {tags.map((tag) => (
             <option key={tag.value} value={tag.label} onChange={setTag}>
               {tag.label}
@@ -148,20 +153,20 @@ function SideBar({ getPhotos, token, onUpdate }) {
         </select>
       </form>
       {/* 올려놓은 사진과 선택한 태그를 자료로 이미지 업로드하기 */}
-      <button className="upload-button" onClick={handleImageUpload}>사진 업로드</button>
+      <button className="upload__button" onClick={handleImageUpload}>사진 업로드</button>
       {/* UI 때문에 만든 div. 기능은 없다 */}
       <div className="gap"></div>
       {/* 태그를 선택하면 선택된 태그 기준으로 get 요청 보내서 화면에 뿌려주기       */}
       <form className="sorttag">
         <select>
           {tags.map((tag) => (
-            <option key={tag.value} value={tag.label} onChange={setTag}>
+            <option key={tag.value} value={tag.label} onChange={setTagForSort}>
               {tag.label}
             </option>
           ))}
         </select>
       </form>
-      <button className="sort-button" onClick={() => getPhotos()}>모아보기</button>
+      <button className="sort-button" onClick={() => getPhotosByTag()}>모아보기</button>
     </div>
   );
 }

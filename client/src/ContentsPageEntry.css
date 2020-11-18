@@ -1,4 +1,30 @@
+/* .images {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-content: space-around;
+    
+}
+
+.photo {
+    display: flex;
+    flex: 0.5 1 18%;
+    justify-content: space-around;
+    float: left;
+    align-items: center;
+    border: 5px solid red;
+} */
 .images {
-    flex: 0 1 100%;
-    border: 1px rgb(44, 174, 102);
+   position: relative;
+    top: 1px;
+    left: 1px;
+}
+
+.photo {
+    display: inline-block;
+    width: 15rem;
+    height: 15rem;
+    border: 1px solid rgb(44, 174, 102);
+    border-radius: 8px;
+    margin: 5px 8px;
 }

@@ -1,8 +1,9 @@
-.header {
+.header__detail {
     margin: 10px;
 }
 
-.header > div {
+.header__detail > div {
+
     display: inline-block;
     vertical-align: middle;
 }
