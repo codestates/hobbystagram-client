@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 // import "./SideBar.css";
 
-
 const width = '18rem';
 const height = '17rem';
 const borderStyle = "1px solid rgb(44, 174, 102)";
@@ -93,6 +92,7 @@ function SideBar({ token, getPhotosByTag, setTagForSort, onUpdate }) {
   const onDragStart = (e) => {
     e.preventDefault();
   };
+
   const onDragOver = (e) => {
     e.preventDefault();
   };
@@ -105,6 +105,7 @@ function SideBar({ token, getPhotosByTag, setTagForSort, onUpdate }) {
       }}
     );
     const formData = new FormData();
+
     if(data === '') {
       alert("사진을 선택해 주세요.")
     }  else {
@@ -134,14 +135,12 @@ function SideBar({ token, getPhotosByTag, setTagForSort, onUpdate }) {
         style={dropAreaStyle}
         onDrop={(e) => onDrop(e)} onDragOver={(e) => onDragOver(e)}>
           {data && <img style={dropAreaImageStyle} src={data} />}
-          
         </div>
         {/* <div className="button-wrapper">{ */}
         {/* data &&  */}
         {/* }</div> */}
       </div>
       <button className="removebutton" onClick={() => setData(false)}>Remove</button>
-
       {/* 토글 버튼 구역 */}
       <form className="uploadtag">
         <select>
@@ -153,10 +152,8 @@ function SideBar({ token, getPhotosByTag, setTagForSort, onUpdate }) {
           ))}
         </select>
       </form>
-
       {/* 올려놓은 사진과 선택한 태그를 자료로 이미지 업로드하기 */}
       <button className="upload__button" onClick={handleImageUpload}>사진 업로드</button>
-
       {/* UI 때문에 만든 div. 기능은 없다 */}
       <div className="gap"></div>
       {/* 태그를 선택하면 선택된 태그 기준으로 get 요청 보내서 화면에 뿌려주기       */}

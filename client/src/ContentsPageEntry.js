@@ -3,6 +3,7 @@ import ContentDetail from './ContentDetail';
 import './ContentsPageEntry.css';
 
 function ContentsPageEntry({ photo, userInfo }) {
+
     const [isOpen, setIsOpen] = useState(false);
 
     const handlePhotoModal = () => {
@@ -13,7 +14,7 @@ function ContentsPageEntry({ photo, userInfo }) {
         <div className="images">
             <img
                 className="photo"
-                src={photo}
+                src={photo.photo}
                 onClick={handlePhotoModal}
                 alt="oops!"
             />
@@ -24,7 +25,7 @@ function ContentsPageEntry({ photo, userInfo }) {
                     open
                 >
                     <button onClick={handlePhotoModal}>창 닫기</button>
-                    <ContentDetail photo={photo} userInfo={userInfo} handlePhotoModal={handlePhotoModal}/>
+                    <ContentDetail photo={photo} userInfo={userInfo} token={token} handlePhotoModal={handlePhotoModal}/>
                 </dialog>
             )}
         </div>

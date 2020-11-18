@@ -1,10 +1,13 @@
 .header__detail {
     margin: 10px;
 }
+
 .header__detail > div {
+
     display: inline-block;
     vertical-align: middle;
 }
+
 .intro {
     color: rgb(44, 174, 102);
     font-weight: bolder;
@@ -15,6 +18,7 @@
     /* position: relative;
     right: 22.7rem; */
 }
+
 .mypage-link a {
     text-decoration: none;
     color: rgb(44, 174, 102);
@@ -22,7 +26,6 @@
     font-size: 1rem;
     display: inline-block;
     vertical-align: middle;
-    
 }
 
 .logout {

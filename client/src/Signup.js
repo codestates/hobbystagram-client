@@ -7,6 +7,7 @@ const width = 'grid-column: 1 / 3';
 const height = 'grid-row: 1 / 6';
 const borderStyle = "1px solid rgb(44, 174, 102)";
 const borderRadius = "6px";
+
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,6 +33,7 @@ function SignUp() {
         }
     })
   }
+
   // const checkEmailInfo = () => {
   //   axios.post('http://34.64.248.85:8080/user/signup', {
   //       email: email
@@ -73,6 +75,7 @@ function SignUp() {
     borderStyle: borderStyle,
     borderRadius: borderRadius
   }
+
   const onDrop = e => {
     e.preventDefault();
     const {
@@ -101,12 +104,14 @@ function SignUp() {
       setData(loadEvt.target.result);
     };
   };
+
   const onDragStart = e => {
     e.preventDefault();
-    };
+  };
+
     const onDragOver = e => {
     e.preventDefault();
-    };
+  };
 
     const handleImageUpload = async () => {
     const formData = new FormData();
@@ -124,13 +129,11 @@ function SignUp() {
         style={dropAreaStyle}
         onDrop={(e) => onDrop(e)} onDragOver={(e) => onDragOver(e)}>
             {data && <img style={dropAreaImageStyle} src={data} />}
-            
         </div>
         {/* <div className="button-wrapper">{ */}
         {/* data &&  */}
-        
         {/* }</div> */}
-        </div>
+    </div>
         <button className="remove-button" onClick={() => setData(false)}>Remove</button>
             <input 
             className="email"
@@ -171,6 +174,7 @@ function SignUp() {
         </div>
       </div>
     </div>
-  );
+    </div>
+    );
 }
 export default withRouter(SignUp);

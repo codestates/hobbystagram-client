@@ -45,8 +45,9 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
         );
         const res = await authedAxios.get('http://34.64.248.85:8080/content') // url // axios 변수 설정으로 url을 넣을 수도 있다
         console.log('이미지 가져오기 함수', res.data)
+      
         setPhotos(res.data);
-        // 임시 -> 실제 데이터 // console.log(res) // console.log("포토 확인", res)
+        // 임시 -> 실제 데이터
     }
 
     const onUpdate = () => {
@@ -78,6 +79,8 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
             <div className="contents" >
                 {photos.map(photo => 
                     <ContentsPageEntry key={photo.id} photo={photo.photo} userInfo={userInfo} />
+                    // 실제 photo가 가지고 있는 속성들에는 무엇 무엇이 있는가?
+
                 )}
             </div>
         </div>
@@ -85,6 +88,5 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
         <Redirect to='/login' />
     )
 }
-
 
 export default ContentsPage; 

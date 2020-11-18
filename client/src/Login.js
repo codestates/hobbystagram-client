@@ -16,9 +16,9 @@ function Login({ LoginSuccess }) {
     if(email === "" || password === "") {
         alert("회원 정보를 입력해 주세요")
     } else {
-        const res = await axios.post('http://34.64.248.85:8080/user/signin', {
-                email: email,
-                password: password
+        const res = await axios.post('http://34.64.248.85:8080/user/signin', { 
+            email: email,
+            password: password
         });
         console.log('res', res);
         console.log('res.data', res.config.data);

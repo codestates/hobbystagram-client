@@ -15,7 +15,9 @@
     grid-column: 1 / 3;
     grid-row: 1 / 7;
 }
+
 .removebutton {
+
     border: 0.5px solid rgb(44, 174, 102);
     background-color: rgb(252, 246, 245);
     border-radius: 6px;
@@ -25,6 +27,7 @@
     font-weight: bolder;
     font-size: 1.2rem;
 }
+
 .uploadtag > select {
     border: 0.5px solid rgb(44, 174, 102);
     background-color: rgb(252, 246, 245);
@@ -40,7 +43,9 @@
     font-weight: bolder;
     font-size: 1.2rem;
 }
+
 .upload__button {
+
     border: 0.5px solid rgb(44, 174, 102);
     background-color: rgb(252, 246, 245);
     border-radius: 6px;
@@ -50,10 +55,12 @@
     color: rgb(44, 174, 102);
     font-size: 1.2rem;
 }
+
 .gap {
     grid-column: 1 / 3;
     grid-row: 9 / 10; 
 }
+
 .sorttag > select {
     border: 0.5px solid rgb(44, 174, 102);
     background-color: rgb(252, 246, 245);
@@ -68,8 +75,8 @@
     color: rgb(44, 174, 102);
     font-weight: bolder;
     font-size: 1.2rem;
-
 }
+
 .sort-button {
     border: 0;
     background-color: rgb(44, 174, 102);
