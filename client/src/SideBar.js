@@ -113,11 +113,11 @@ function SideBar({ token, getPhotosByTag, setTagForSort, onUpdate }) {
       .then(res => res.blob())
       .then(_data => {
         console.log('data :', _data)
-        formData.append("img", _data, 'temp.jpg'); // 태그도 추가하기
-        formData.append("tag", tag)
+        formData.append("img", _data, 'temp.jpg');
+        formData.append("tag", tag) // 수정하기
         console.log('formData :',formData)
         authedAxios.post("http://34.64.248.85:8080/content", formData)
-        .then((res) => {
+        .then(res => {
           console.log(res);
           onUpdate(); // 사진 업로드 시 바로 추가(순서 변경?)
           setData("");
@@ -144,7 +144,6 @@ function SideBar({ token, getPhotosByTag, setTagForSort, onUpdate }) {
       {/* 토글 버튼 구역 */}
       <form className="uploadtag">
         <select>
-          
           {tags.map((tag) => (
             <option key={tag.value} value={tag.label} onChange={setTag}>
               {tag.label}
