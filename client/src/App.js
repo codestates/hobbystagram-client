@@ -9,7 +9,6 @@ import MyPage from './MyPage';
 import ContentsPage from './ContentsPage';
 // import examplePhotos from './photos.json';
 
-
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState(null);
@@ -140,7 +139,6 @@ function App() {
             path="/contentspage"
             render={() =>
                 <ContentsPage userInfo={userInfo} token={token} LogOutHandler={LogOutHandler} redirectToMyPage={redirectToMyPage} />
-
             }
           />
         </Switch>

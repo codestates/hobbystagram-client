@@ -4,6 +4,7 @@ import "./Header.css";
 
 function Header({ userInfo, token, LogOutHandler }) {
   console.log(userInfo); 
+
   return (
     <div className="header">
       <div className="intro">
@@ -18,7 +19,6 @@ function Header({ userInfo, token, LogOutHandler }) {
       <button className="logout" onClick={() => LogOutHandler()}>
         로그아웃
       </button>
-
       </div>
     </div>
   );

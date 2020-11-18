@@ -23,9 +23,9 @@ function MyPage({ userInfo, token}) {
   const userInfoHandler = async () => {
     const response = await axios.post('http://34.64.248.85:8080/user/info', {
       password: oldPassword,
-  }, {
+    }, {
     // 여기에 토큰 넣기
-  })
+    })
     if(response.status === 200) {
       axios.post('http://34.64.248.85:8080/user/change', {
         password: newPassword,
@@ -76,6 +76,7 @@ function MyPage({ userInfo, token}) {
     borderStyle: borderStyle,
     borderRadius: borderRadius
   }
+
   const onDrop = e => {
     e.preventDefault();
     const {
@@ -105,15 +106,15 @@ function MyPage({ userInfo, token}) {
       setData(loadEvt.target.result);
     };
   };
+
   const onDragStart = e => {
     e.preventDefault();
   };
+
   const onDragOver = e => {
     e.preventDefault();
   };
   
-  
-
     return (
     <div>
       <div className="ui form">
@@ -125,15 +126,12 @@ function MyPage({ userInfo, token}) {
             style={dropAreaStyle}
             onDrop={(e) => onDrop(e)} onDragOver={(e) => onDragOver(e)}>
             {data && <img style={dropAreaImageStyle} src={data} />}
-          
             </div>
             {/* <div className="button-wrapper">{ */}
             {/* data &&  */}
-        
             {/* }</div> */}
-            </div>
+          </div>
           <button className="remove-button" onClick={() => setData(false)}>Remove</button>
-
           <button className="avatarup" onClick={handleImageUpload}>프로필</button>
           <input 
           className="oldpass"
@@ -162,8 +160,6 @@ function MyPage({ userInfo, token}) {
             accept="image/png, image/jpeg, image/gif"
             onChange={handleImageChange} 
           /> */}
-          
-          
           <button className="updateuser" onClick={() => userInfoHandler()}>정보 수정</button>
           <div className="contentspage-link">
             <a>

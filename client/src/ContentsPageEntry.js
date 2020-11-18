@@ -5,7 +5,7 @@ import './ContentsPageEntry.css';
 
 // 실행해 보기
 
-function ContentsPageEntry({ photo, userInfo }) {
+function ContentsPageEntry({ photo, userInfo, token }) {
     console.log(photo) // path를 받아 옴
 
     const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +36,7 @@ function ContentsPageEntry({ photo, userInfo }) {
         <div className="images">
             <img
                 className="photo"
-                src={photo}
+                src={photo.photo}
                 onClick={handlePhotoModal}
                 alt="oops!"
             />
@@ -48,7 +48,7 @@ function ContentsPageEntry({ photo, userInfo }) {
                     // onClick={handlePhotoModal}
                 >
                     <button onClick={handlePhotoModal}>창 닫기</button>
-                    <ContentDetail photo={photo} userInfo={userInfo} handlePhotoModal={handlePhotoModal}/>
+                    <ContentDetail photo={photo} userInfo={userInfo} token={token} handlePhotoModal={handlePhotoModal}/>
                 </dialog>
             )}
         </div>

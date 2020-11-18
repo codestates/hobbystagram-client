@@ -7,12 +7,15 @@
     grid-template-areas: "header header"
                          "aside main";
 }
+
 .header {
     grid-area: header;
 }
+
 .sidebar {
     grid-area: aside;
 } */
+
 .contents {
     display: flex;
     flex-wrap: wrap;

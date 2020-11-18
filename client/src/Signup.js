@@ -7,6 +7,7 @@ const width = 'grid-column: 1 / 3';
 const height = 'grid-row: 1 / 6';
 const borderStyle = "1px solid rgb(44, 174, 102)";
 const borderRadius = "6px";
+
 function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -28,7 +29,12 @@ function SignUp() {
           alert("회원 가입이 완료되었습니다.")
           history.push('/');
         }else if(res.status === 409) {
+          alert("가입 정보를 다시 확인해 주세요")
+        }
+    })
+  }
 
+  // const checkNickInfo = () => {
   //   axios.post('http://34.64.248.85:8080/user/signup', {
   //       email: email
   //   })
@@ -68,6 +74,7 @@ function SignUp() {
     borderStyle: borderStyle,
     borderRadius: borderRadius
   }
+
   const onDrop = e => {
     e.preventDefault();
     const {
@@ -96,12 +103,14 @@ function SignUp() {
       setData(loadEvt.target.result);
     };
   };
+
   const onDragStart = e => {
     e.preventDefault();
-    };
+  };
+
     const onDragOver = e => {
     e.preventDefault();
-    };
+  };
 
     const handleImageUpload = async () => {
     const formData = new FormData();
@@ -119,53 +128,49 @@ function SignUp() {
         style={dropAreaStyle}
         onDrop={(e) => onDrop(e)} onDragOver={(e) => onDragOver(e)}>
             {data && <img style={dropAreaImageStyle} src={data} />}
-            
         </div>
         {/* <div className="button-wrapper">{ */}
         {/* data &&  */}
-        
         {/* }</div> */}
-        </div>
+    </div>
         <button className="remove-button" onClick={() => setData(false)}>Remove</button>
-            <input 
-            className="email"
-            value={email} 
-            onChange={(e) => setEmail(e.target.value)} 
-            type="text" 
-            placeholder="email"
-
-          <input 
-            className="password"
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            type="password" 
-            placeholder="password" 
-          />    
-          <input 
-            className="nickname"
-            value={nickname} 
-            onChange={(e) => setNickname(e.target.value)} 
-            type="text" 
-            placeholder="nickname" 
-          />
-
-          {/* <input type="file" onChange={handleImageChange} /> */}
-          {/* drag & drop 구역 */}
-
-          
-          <button className="avatarup" onClick={() => handleImageUpload}>프로필</button>
-          
-          <button className="signup" onClick={() => signUpHandler()}>회원 가입</button>
-          <div className="login-link">
-            <a>
-              <Link to="login">
-                <h3>계정이 이미 있으신가요?</h3>
-              </Link>
-            </a>
-          </div>
+        <input 
+        className="email"
+        value={email} 
+        onChange={(e) => setEmail(e.target.value)} 
+        type="text" 
+        placeholder="email"
+        />
+        {/* <button className="check-email" onClick={() => checkEmailInfo()}>확인</button>   */}
+        <input 
+          className="password"
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)} 
+          type="password" 
+          placeholder="password" 
+        />    
+        <input 
+          className="nickname"
+          value={nickname} 
+          onChange={(e) => setNickname(e.target.value)} 
+          type="text" 
+          placeholder="nickname" 
+        />
+        {/* <button className="check-nick" onClick={() => checkNickInfo()}>확인</button>  */}
+        {/* <input type="file" onChange={handleImageChange} /> */}
+        {/* drag & drop 구역 */}
+        <button className="avatarup" onClick={() => handleImageUpload}>프로필</button>
+        <button className="signup" onClick={() => signUpHandler()}>회원 가입</button>
+        <div className="login-link">
+          <a>
+            <Link to="login">
+              <h3>계정이 이미 있으신가요?</h3>
+            </Link>
+          </a>
         </div>
       </div>
     </div>
-  );
+    </div>
+    );
 }
 export default withRouter(SignUp);

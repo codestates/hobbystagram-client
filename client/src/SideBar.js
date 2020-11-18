@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 // import "./SideBar.css";
 
-
 const width = 323;
 const height = 247;
 const borderStyle = "1px solid rgb(44, 174, 102)";
@@ -93,6 +92,7 @@ function SideBar({ getPhotos, token, onUpdate }) {
   const onDragStart = (e) => {
     e.preventDefault();
   };
+
   const onDragOver = (e) => {
     e.preventDefault();
   };
@@ -110,11 +110,11 @@ function SideBar({ getPhotos, token, onUpdate }) {
     .then(res => res.blob())
     .then(_data => {
       console.log(_data)
-      formData.append("img", _data, 'temp.jpg'); // 태그도 추가하기
-      formData.append()
+      formData.append("img", _data, 'temp.jpg');
+      formData.append("tag", tag) // 수정하기
       console.log(formData)
       authedAxios.post("http://34.64.248.85:8080/content", formData)
-      .then((res) => {
+      .then(res => {
         console.log(res);
         onUpdate(); // 사진 업로드 시 바로 추가(순서 변경?)
       })
@@ -130,14 +130,12 @@ function SideBar({ getPhotos, token, onUpdate }) {
         style={dropAreaStyle}
         onDrop={(e) => onDrop(e)} onDragOver={(e) => onDragOver(e)}>
           {data && <img style={dropAreaImageStyle} src={data} />}
-          
         </div>
         {/* <div className="button-wrapper">{ */}
         {/* data &&  */}
         {/* }</div> */}
       </div>
       <button className="remove-button" onClick={() => setData(false)}>Remove</button>
-
       {/* 토글 버튼 구역 */}
       <form className="uploadtag">
         <select>
@@ -149,10 +147,8 @@ function SideBar({ getPhotos, token, onUpdate }) {
           ))}
         </select>
       </form>
-
       {/* 올려놓은 사진과 선택한 태그를 자료로 이미지 업로드하기 */}
       <button className="upload-button" onClick={handleImageUpload}>사진 업로드</button>
-
       {/* UI 때문에 만든 div. 기능은 없다 */}
       <div className="gap"></div>
       {/* 태그를 선택하면 선택된 태그 기준으로 get 요청 보내서 화면에 뿌려주기       */}

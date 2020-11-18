@@ -10,10 +10,10 @@ import './ContentsPage.css';
 import './SideBar.css';
 // import examplePhotos from './photos.json';
 
-
 function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
     console.log(userInfo);
     console.log(token)
+
     // const examplePhotos = [ // http는 크롬에서 안 뜸
     //     {
     //         id : 1, 
@@ -86,9 +86,9 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
             }}
         );
         const res = await authedAxios.get('http://34.64.248.85:8080/content') // url // axios 변수 설정으로 url을 넣을 수도 있다
-        console.log(res.data)
+        console.log("photo", res.data)
         setPhotos(res.data);
-        // 임시 -> 실제 데이터 // console.log(res) // console.log("포토 확인", res)
+        // 임시 -> 실제 데이터
     }
 
     const onUpdate = () => {
@@ -111,7 +111,6 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
     //     setIsModalOpen(false)
     // }
     
-
     return userInfo !== null ? (
         <div className="contentspage">
             <div className="header">
@@ -122,7 +121,7 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
             </div>
             <div className="contents" >
                 {photos.map(photo => 
-                    <ContentsPageEntry key={photo.id} photo={photo.photo} userInfo={userInfo} />
+                    <ContentsPageEntry key={photo.id} photo={photo} userInfo={userInfo} token={token} />
                     // 실제 photo가 가지고 있는 속성들에는 무엇 무엇이 있는가?
                 )}
             </div>
@@ -131,7 +130,6 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
         <Redirect to='/login' />
     )
 }
-
 
 export default ContentsPage; 
 // withRouter로 감싸면 규칙에서 벗어나 Link등을 자유로이 쓸 수 있다(부모로부터 Router 속성 물려 받음) // 사용법 확인

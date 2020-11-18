@@ -3,19 +3,19 @@ import React from 'react';
 import Comments from './Comments';
 import Likes from './Likes';
 
-function ContentDetail({ photo, userInfo, handlePhotoModal }) { // 모달창 내부 속성
+function ContentDetail({ photo, userInfo, token, handlePhotoModal }) { // 모달창 내부 속성
     return(
         <div>
             <img
                 className="photo-expanded"
-                src={photo}
+                src={photo.photo}
                 onClick={handlePhotoModal}
                 alt="oops!"
             />
             {/* 좋아요 기능 <-> 연동
             photo 삭제 및 목록 새로고침 기능 <-> 연동 */}
-            <Likes photo={photo} userInfo={userInfo} />
-            <Comments />
+            <Likes photo={photo} token={token} />
+            <Comments photo={photo} token={token} />
         </div>
     )
 }
