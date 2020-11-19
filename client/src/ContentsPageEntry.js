@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+
 import ContentDetail from './ContentDetail';
 import './ContentsPageEntry.css';
 
+
 function ContentsPageEntry({ photo, token, userInfo }) {
+
 
     const [isOpen, setIsOpen] = useState(false);
 
