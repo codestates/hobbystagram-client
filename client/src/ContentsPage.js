@@ -64,8 +64,20 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
           }}
         );
         const res = await authedAxios.get(`http://34.64.248.85:8080/content/tag?name=${tagForSort}`)
-        console.log('사진 제대로 받아오나?', res);
-    }
+        console.log('태그 기준 정렬', res);
+        setPhotos(res.config.url);
+      }
+
+      const getPhotosByLike = async () => {
+        const authedAxios = axios.create(
+          { headers: { 
+              Authorization: `${token}`
+          }}
+        );
+        const res = await authedAxios.get('http://34.64.248.85:8080/content/favs')
+        console.log('좋아요 기준 정렬', res);
+        // setPhotos(res);
+      }  
 
     return userInfo !== null ? (
         <div className="contentspage">
@@ -73,7 +85,12 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
                 <Header userInfo={userInfo} token={token} LogOutHandler={LogOutHandler}/>
             </div>
             <div className="sidebar">
-                <SideBar token={token} getPhotosByTag={getPhotosByTag} setTagForSort={setTagForSort} onUpdate={onUpdate}/>
+                <SideBar 
+                    token={token} 
+                    getPhotosByTag={getPhotosByTag} 
+                    setTagForSort={setTagForSort} 
+                    onUpdate={onUpdate}
+                    getPhotosByLike={getPhotosByLike}/>
             </div>
             <div className="contents" >
                 {photos.map(photo => 

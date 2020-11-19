@@ -29,7 +29,7 @@ const tags = [
   },
 ];
 
-function SideBar({ token, getPhotosByTag, setTagForSort, onUpdate }) {
+function SideBar({ token, getPhotosByTag, setTagForSort, onUpdate, getPhotosByLike }) {
   // image drag & drop 의 state
 
   const [data, setData] = useState('');
@@ -161,7 +161,8 @@ function SideBar({ token, getPhotosByTag, setTagForSort, onUpdate }) {
           ))}
         </select>
       </form>
-      <button className="sort-button" onClick={() => getPhotosByTag()}>모아보기</button>
+      <button className="sort__button" onClick={() => getPhotosByTag()}>모아보기</button>
+      <button className="getlike__button" onClick={() => getPhotosByLike()}>좋아요한 사진 모아보기</button>
     </div>
   );
 }

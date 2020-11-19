@@ -1,4 +1,4 @@
-.field {
+.mypage__detail {
     position: absolute;
     top: 30%;
     left: 40%;
@@ -19,7 +19,7 @@
     grid-row: 1 / 5;
 }
 
-.remove-button {
+.remove__button {
     border: 0.5px solid rgb(44, 174, 102);
     background-color: rgb(252, 246, 245);
     border-radius: 6px;

@@ -8,7 +8,10 @@ function Header({ userInfo, token, LogOutHandler }) {
   return (
     <div className="header__detail">
       <div className="intro">
-        <h3>{userInfo.email} 님의 hobbystagram 입니다.</h3>
+        <h3><span className="username">{userInfo.email}</span> 
+        <span className="nim"> &nbsp;님의</span>
+        <span className="hobby"> &nbsp; &nbsp;hobbystagram</span>
+        <span className="is"> &nbsp;입니다.</span></h3>
       </div>
       <div className="mypage-link">
         <a>
