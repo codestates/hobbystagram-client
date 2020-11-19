@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import ContentDetail from './ContentDetail';
 import './ContentsPageEntry.css';
 
-function ContentsPageEntry({ photo, userInfo, token }) {
-    // console.log(photo) // path를 받아 옴(fake data)
+
+function ContentsPageEntry({ photo, token, userInfo }) {
+
 
     const [isOpen, setIsOpen] = useState(false);
 
