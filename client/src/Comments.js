@@ -14,13 +14,13 @@ function Comments ({ photo, token }) {
             Authorization: `${token}`
         }}
     );
-    const res = await authedAxios.get(`http://34.64.248.85:8080/content/comment/${photo.id}`)
+    const res = await authedAxios.get(`http://34.64.248.85:8080/content/${photo.id}`)
     console.log("comment", res)
-    setList(list.concat(res.data.comment));
-    // 서버에 get 요청 코드가 없다..?
+    setList(list.concat(res.data[0].comments[0].comment));
+    // 서버에 get 요청 코드가 없다..? // 해결! // 반응형 크기 수정 필요..
   }
 
-  axiosComment()
+  // axiosComment()
 
   console.log("빈 배열일리가 없어!!", list)
 
@@ -47,10 +47,10 @@ function Comments ({ photo, token }) {
     })
   }
 
-  // function removeItem(index) {
-  //   list.splice(index, 1);
-  //   setList(list => list.filter(item => item.index !== index))
-  // }
+  function removeItem(index) {
+    list.splice(index, 1);
+    setList(list => list.filter(item => item.index !== index))
+  }
 
     return (
       <div>
@@ -62,7 +62,7 @@ function Comments ({ photo, token }) {
             {list.map((comment, index) => {
               return (
                 <li key={index}>{comment}
-                  {/* <button onClick={() => removeItem(index)}>삭제</button> */}
+                  <button onClick={() => removeItem(index)}>삭제</button>
                 </li>)
             })}
           </ol>
