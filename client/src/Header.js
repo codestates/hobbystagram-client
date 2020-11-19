@@ -2,7 +2,7 @@ import React from "react";
 import { withRouter, Link } from "react-router-dom";
 import "./Header.css";
 
-function Header({ userInfo, token, LogOutHandler }) {
+function Header({ userInfo, token, LogOutHandler, onUpdate }) {
   console.log(userInfo); 
 
   return (
@@ -10,7 +10,8 @@ function Header({ userInfo, token, LogOutHandler }) {
       <div className="intro">
         <h3><span className="username">{userInfo.email}</span> 
         <span className="nim"> &nbsp;님의</span>
-        <span className="hobby"> &nbsp; &nbsp;hobbystagram</span>
+        <span className="hobby"> &nbsp; &nbsp;
+          <button onClick={() => onUpdate()}>hobbystagram</button></span>
         <span className="is"> &nbsp;입니다.</span></h3>
       </div>
       <div className="mypage-link">

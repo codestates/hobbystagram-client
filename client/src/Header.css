@@ -25,6 +25,13 @@
 .intro > h3 > .hobby {
     color: rgb(255, 123, 172);
 }
+.intro > h3 > .hobby > button{
+    color: rgb(255, 123, 172);
+    border: 0;
+    font-weight: bolder;
+    font-size: 1rem;
+    cursor: pointer;
+}
 .intro > h3 > .is {
     color: rgb(44, 174, 102);
 }
@@ -44,5 +51,5 @@
     font-size: 1rem;
     display: inline-block;
     vertical-align: middle;
-    
+    cursor: pointer;
 }
