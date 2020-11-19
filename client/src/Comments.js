@@ -16,29 +16,28 @@ function Comments ({ photo, token }) {
     );
     const res = await authedAxios.get(`http://34.64.248.85:8080/content/${photo.id}`)
     console.log("comment", res)
-    setList(list.concat(res.data[0].comments[0].comment));
+    setList(res.data[0].comments);
     // 서버에 get 요청 코드가 없다..? // 해결! // 반응형 크기 수정 필요..
   }
 
   // axiosComment()
 
-  console.log("빈 배열일리가 없어!!", list)
+  console.log("커멘트 리스트", list)
 
   function handleChange(e) {
     setText(e.target.value)
     console.log("커멘트 입력창", text)
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  const handleSubmit = (e) => {
+    // e.preventDefault();
 
     const authedAxios = axios.create(
       { headers: { 
           Authorization: `${token}`
       }}
     );
-  
-    authedAxios.post(`http://34.64.248.85:8080/content/comment/${photo.id}`, {comment: text})
+    authedAxios.post(`http://34.64.248.85:8080/content/comment/${photo.id}`, {comment: text}) // body {comment: text}
     .then(res => {
       console.log("커멘트를 보낸다", res.data.message) // 일단 post는 됨!
       if (res.status === 200) {
@@ -47,25 +46,42 @@ function Comments ({ photo, token }) {
     })
   }
 
-  function removeItem(index) {
-    list.splice(index, 1);
-    setList(list => list.filter(item => item.index !== index))
-  }
+  const handleRemoveItem = async (id) => {
+    const authedAxios = axios.create(
+      { headers: { 
+          Authorization: `${token}`
+      }}
+    );
 
+    console.log(id)
+
+    // list.splice(index, 1);
+    // setList(list => list.filter(item => item.index !== index)) // 서버와 소통 생각!
+    
+    const res = await authedAxios.delete(`http://34.64.248.85:8080/content/comment/${id}`)
+    .then(res => {
+      console.log("커멘트를 지운다", res.data.message)
+      axiosComment()
+    })
+  }
+  
     return (
       <div>
-        <form className="form-comment" onSubmit={e => handleSubmit(e)}>
+        {/* <form className="form-comment"> */}
           <input className="input-comment" value={text} placeholder='댓글을 입력하세요' onChange={e => handleChange(e)} />
-          <button className="button-comment">작성</button>
-        </form>
+          <button className="button-comment" onClick={() => handleSubmit()}>작성</button>
           <ol>
-            {list.map((comment, index) => {
+            {list.map(({ comment, id }, index) => {
               return (
-                <li key={index}>{comment}
-                  <button onClick={() => removeItem(index)}>삭제</button>
-                </li>)
+                <div>
+                  <li key={index}>{comment}
+                    <button onClick={() => handleRemoveItem(id)}>삭제</button>
+                  </li>
+                </div>
+                )
             })}
           </ol>
+        {/* </form> */}
       </div>
     )
 }
