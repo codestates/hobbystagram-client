@@ -1,20 +1,3 @@
-/* .images {
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
-    align-content: space-around;
-    
-}
-
-.photo {
-    display: flex;
-    flex: 0.5 1 18%;
-    justify-content: space-around;
-    float: left;
-    align-items: center;
-    border: 5px solid red;
-} */
-
 .images {
    position: relative;
    top: 1px;

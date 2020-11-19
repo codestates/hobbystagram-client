@@ -33,37 +33,6 @@ function SignUp() {
         }
     })
   }
-
-  // const checkEmailInfo = () => {
-  //   axios.post('http://34.64.248.85:8080/user/signup', {
-  //       email: email
-  //   })
-  //   .then(res => {
-  //       if(res.status === 409) {
-  //           alert("이메일 계정을 다시 확인해 주세요")
-  //       } else {
-  //         console.log(res);
-  //       }
-  //   })
-  //   .catch((error) => {
-  //       alert("이메일 계정을 다시 확인해 주세요")
-  //   })
-  // }
-
-  // const checkNickInfo = () => {
-  //   axios.post('http://34.64.248.85:8080/user/signup', {
-  //       nickname: nickname
-  //   })
-  //   .then(res => {
-  //       if(res.status === 200) {
-  //           alert("사용 가능한 닉네임입니다.")
-  //       }
-  //   })
-  //   .catch((error) => {
-  //       alert("이미 사용중인 닉네임입니다.")
-  //   })
-  // }
-
   // drag & drop 을 구현하기 위한 함수
   const dropAreaImageStyle = {
     width,
@@ -130,9 +99,6 @@ function SignUp() {
         onDrop={(e) => onDrop(e)} onDragOver={(e) => onDragOver(e)}>
             {data && <img style={dropAreaImageStyle} src={data} />}
         </div>
-        {/* <div className="button-wrapper">{ */}
-        {/* data &&  */}
-        {/* }</div> */}
     </div>
         <button className="remove-button" onClick={() => setData(false)}>Remove</button>
           <input 
@@ -156,10 +122,6 @@ function SignUp() {
             type="text" 
             placeholder="nickname" 
           />
-
-          {/* <input type="file" onChange={handleImageChange} /> */}
-          {/* drag & drop 구역 */}
-
           <button className="avatarup" onClick={() => handleImageUpload}>프로필</button>
           <button className="signup" onClick={() => signUpHandler()}>회원 가입</button>
           <div className="login-link">

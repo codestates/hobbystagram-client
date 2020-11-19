@@ -4,7 +4,7 @@ import Comments from './Comments';
 import Likes from './Likes';
 import './ContentsDetail.css';
 
-function ContentDetail({ photo, userInfo, token, handlePhotoModal }) { // 모달창 내부 속성
+function ContentDetail({ photo, userInfo, token, handlePhotoModal }) {
     return(
         <div className="modal">
             <img
@@ -13,8 +13,6 @@ function ContentDetail({ photo, userInfo, token, handlePhotoModal }) { // 모달
                 onClick={handlePhotoModal}
                 alt="oops!"
             />
-            {/* 좋아요 기능 <-> 연동
-            photo 삭제 및 목록 새로고침 기능 <-> 연동 */}
             <Likes photo={photo} token={token} />
             <Comments photo={photo} token={token} />
         </div>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import "./SideBar.css";
 
 const width = '18rem';
 const height = '17rem';
@@ -109,7 +108,7 @@ function SideBar({ token, getPhotosByTag, setTagForSort, onUpdate }) {
     if(data === '') {
       alert("사진을 선택해 주세요.")
     }  else {
-      fetch(data) // fetch
+      fetch(data)
       .then(res => res.blob())
       .then(_data => {
         console.log('data :', _data)
@@ -119,7 +118,7 @@ function SideBar({ token, getPhotosByTag, setTagForSort, onUpdate }) {
         authedAxios.post("http://34.64.248.85:8080/content", formData)
         .then(res => {
           console.log(res);
-          onUpdate(); // 사진 업로드 시 바로 추가(순서 변경?)
+          onUpdate();
           setData("");
         })
       })
@@ -136,9 +135,6 @@ function SideBar({ token, getPhotosByTag, setTagForSort, onUpdate }) {
         onDrop={(e) => onDrop(e)} onDragOver={(e) => onDragOver(e)}>
           {data && <img style={dropAreaImageStyle} src={data} />}
         </div>
-        {/* <div className="button-wrapper">{ */}
-        {/* data &&  */}
-        {/* }</div> */}
       </div>
       <button className="removebutton" onClick={() => setData(false)}>Remove</button>
       {/* 토글 버튼 구역 */}

@@ -4,12 +4,11 @@ import ContentDetail from './ContentDetail';
 import './ContentsPageEntry.css';
 
 function ContentsPageEntry({ photo, userInfo, token }) {
-    // console.log(photo) // path를 받아 옴(fake data)
 
     const [isOpen, setIsOpen] = useState(false);
 
     const handlePhotoModal = () => {
-        setIsOpen(!isOpen) // 현 상태와 반대로 만들어 줌
+        setIsOpen(!isOpen)
     }
 
     return (
