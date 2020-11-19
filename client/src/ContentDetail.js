@@ -2,10 +2,11 @@ import React from 'react';
 
 import Comments from './Comments';
 import Likes from './Likes';
+import './ContentsDetail.css';
 
 function ContentDetail({ photo, userInfo, token, handlePhotoModal }) { // 모달창 내부 속성
     return(
-        <div>
+        <div className="modal">
             <img
                 className="photo-expanded"
                 src={photo.photo}

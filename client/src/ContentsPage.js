@@ -91,7 +91,7 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
         );
         const res = await authedAxios.get(`http://34.64.248.85:8080/content/tag?name=${tagForSort}`)
         console.log('사진 제대로 받아오나?', res);
-      }
+    }
 
     return userInfo !== null ? (
         <div className="contentspage">

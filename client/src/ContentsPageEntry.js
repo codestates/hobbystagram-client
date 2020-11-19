@@ -26,7 +26,7 @@ function ContentsPageEntry({ photo, userInfo, token }) {
                     style={{ position: "absolute" }}
                     open
                 >
-                    <button onClick={handlePhotoModal}>창 닫기</button>
+                    <button className="close-button" onClick={handlePhotoModal}>Close</button>
                     <ContentDetail photo={photo} userInfo={userInfo} token={token} handlePhotoModal={handlePhotoModal}/>
                 </dialog>
             )}

@@ -1,3 +1,33 @@
 li {
     list-style-type: none;
 }
+
+.form-comment {
+    margin-top: 10px;
+}
+
+.input-comment {
+    width: 18rem;
+    height: 2rem;
+    background-color: rgb(252, 246, 245);
+    border: 3px solid rgb(44, 174, 102);
+    border-radius: 8px;
+    color: rgb(44, 174, 102);
+    font-weight: bold;
+    margin-right: -10px;
+}
+
+.input-comment::placeholder {
+    color: rgb(132, 199, 162);
+}
+
+.button-comment {
+    width: 5rem;
+    height: 2.5rem;
+    background-color: rgb(44, 174, 102);
+    border: 3px solid rgb(44, 174, 102);
+    border-radius: 8px;
+    color: rgb(252, 246, 245);
+    font-weight: bold;
+    padding-bottom: 5px;
+}

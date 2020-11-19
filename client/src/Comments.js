@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from "axios";
+
 import './Comments.css';
 
 // import CommentForm from './CommentForm';
@@ -22,24 +23,29 @@ function Comments ({ photo, token }) {
 //   )
 // }
 
-  const [list, setList] = useState([]);
   const [text, setText] = useState('');
-
+  const [list, setList] = useState([]);
+  
   const axiosComment = async () => { // 서버에서 해당 사진의 댓글 받아오기
     const authedAxios = axios.create(
         { headers: { 
             Authorization: `${token}`
         }}
     );
-    const res = await authedAxios.get(`http://34.64.248.85:8080/content/comment/${photo.id}`)
-    console.log("comment", res)
-    setList(list.concat(res.data.message)); // 리스트에 추가
+    // const res = await authedAxios.get(`http://34.64.248.85:8080/content/comment/${photo.id}`)
+    // console.log("comment", res)
+    // setList(list.concat(res.data.comment)); // 리스트에 추가 // undefined
+    // 서버에 get 요청 코드가 없다!!!!
   }
 
-  axiosComment() // get 에러
+  axiosComment()
+
+  // axiosComment() // get 에러
+  console.log("빈 배열일리가 없어!!", list) // 서버에 데이터가 없어서? 이제 있는데! // 받아오는 형식이 잘못됐나?
 
   function handleChange(e) { // 입력 값으로 text 상태 변경
     setText(e.target.value)
+    console.log("커멘트 입력창", text)
   }
 
   function handleSubmit(e) {
@@ -52,18 +58,20 @@ function Comments ({ photo, token }) {
     );
     // const formData = new FormData(); // body 생성
 
-    const postOptions = {
-      body: JSON.stringify({ message: text})
-    }
-
-    authedAxios.post(`http://34.64.248.85:8080/content/comment/${photo.id}`, postOptions) // 입력 값을 보내 줌
+    // const postOptions = {
+    //   body: JSON.stringify({ 
+    //     comment: text // data : "{"body":"{\"comment\":\"11\"}"}"
+    //   })
+    // }
+  
+    authedAxios.post(`http://34.64.248.85:8080/content/comment/${photo.id}`, {comment: text}) // 입력 값을 보내 줌 // 와 생성된다!
     .then(res => {
-      console.log("commentPost", res)
+      console.log("커멘트를 보낸다", res.data.message) // 일단 post는 됨!
       if (res.status === 200) {
-          axiosComment() // 업데이트
+          axiosComment() // 입력 값을 포함해 댓글 목록 업데이트
       }
-    }) // post는 되지만, 작성 내용을 못 읽음 // body에 담아서 주어야 한다
-    .then(e.target.reset())
+    })
+    // .then(e.target.reset())
   }
 
   // function removeItem(index) {
@@ -75,13 +83,12 @@ function Comments ({ photo, token }) {
   // 입력 후 clear form 기능 구현
   // 기타 서버와 연동해야 할 부분들..
 
-  console.log(list) // array
-
     return (
       <div>
-        <form onSubmit={handleSubmit}>
-          <input value={text} placeholder='댓글을 입력하세요' onChange={e => handleChange(e)} />
-          <button>작성</button>
+        <form className="form-comment" onSubmit={e => handleSubmit(e)}>
+          <input className="input-comment" value={text} placeholder='댓글을 입력하세요' onChange={e => handleChange(e)} />
+          <button className="button-comment">작성</button>
+        </form>
           <ol>
             {list.map((comment, index) => {
               return (
@@ -90,7 +97,6 @@ function Comments ({ photo, token }) {
                 </li>)
             })}
           </ol>
-        </form>
       </div>
     )
 }

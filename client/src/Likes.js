@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from "axios";
 
+import './Likes.css';
+
 function Likes({ photo, token }) {
     console.log("photophoto", photo)
     const [isLike, setIsLike] = useState(false);
@@ -49,11 +51,12 @@ function Likes({ photo, token }) {
     // 렌더링 되는 것, 횟수 조심
 
     const text = isLike === false ? '좋아요 👍' : '좋아합니다 👌';
-
+    // 이미 좋아요했던 사진에 대해 반대로 작동한다..
+    
     return (
-        <div>
-            <button onClick={(event) => {handleLikeStatus(event)}}>{text}</button>
-            <h4>{likesCount}명이 좋아합니다 👌</h4>
+        <div className="like-container">
+            <button className="like-button" onClick={(event) => {handleLikeStatus(event)}}>{text}</button>
+            <h4 className="how-many-people-likes">{likesCount}명이 좋아합니다 👌</h4>
         </div>
     )
 }
