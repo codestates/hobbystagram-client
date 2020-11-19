@@ -5,6 +5,7 @@ import './Likes.css';
 
 function Likes({ photo, token }) {
     console.log("photophoto", photo)
+
     const [isLike, setIsLike] = useState(false);
     const [likesCount, setLikesCount] = useState(0);
 
@@ -19,7 +20,30 @@ function Likes({ photo, token }) {
         setLikesCount(res.data.likeCount);
     }
 
-    axiosLikesCount()
+    useEffect(() => {
+        // axiosLikesCount()
+        console.log("확인, photo.id", photo.id)
+
+        const authedAxios = axios.create(
+            { headers: { 
+                Authorization: `${token}`
+            }}
+        );
+
+        authedAxios.get(`http://34.64.248.85:8080/content/like_status/${photo.id}`) // like_status
+        .then(res => {
+            console.log("likePost", res)
+            if (res.status === 200) {
+                if (res.data.isLiked === false) { // todo - 리팩토링 해야됨 // 좋아요 눌려있는 경우 - OK / 좋아요 안눌려있는 경우 - 첫 버튼이 반대로 나옴 - 서버에서 해결함
+                    setIsLike(false)
+                } else if (res.data.isLiked === true) {
+                    setIsLike(true)
+                }
+                axiosLikesCount() // likesCount
+            }
+        })
+        console.log("확인, isLike", isLike)
+    },[])
 
     function handleLikeStatus(event) {
         event.preventDefault()
@@ -30,16 +54,21 @@ function Likes({ photo, token }) {
             }}
         );
         
-        authedAxios.post(`http://34.64.248.85:8080/content/like/${photo.id}`, true)
+        authedAxios.post(`http://34.64.248.85:8080/content/like/${photo.id}`)
         .then(res => {
             console.log("likePost", res)
             if (res.status === 200) {
+                if (res.data.message === "좋아요 취소 완료 ") {
+                    setIsLike(false)
+                } else {
+                    setIsLike(true)
+                }
                 axiosLikesCount()
             }
         })
-        .then(
-            setIsLike(!isLike)
-        )
+        // .then(
+        //     setIsLike(!isLike)
+        // )
     }
 
     const text = isLike === false ? '좋아요 👍' : '좋아합니다 👌';
