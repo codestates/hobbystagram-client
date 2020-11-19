@@ -65,7 +65,7 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
         );
         const res = await authedAxios.get(`http://34.64.248.85:8080/content/tag?name=${tagForSort}`)
         console.log('태그 기준 정렬', res);
-        setPhotos(res.config.url);
+        // setPhotos(res.config.url);
       }
 
       const getPhotosByLike = async () => {
@@ -82,7 +82,11 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
     return userInfo !== null ? (
         <div className="contentspage">
             <div className="header">
-                <Header userInfo={userInfo} token={token} LogOutHandler={LogOutHandler}/>
+                <Header 
+                  userInfo={userInfo} 
+                  token={token} 
+                  onUpdate={onUpdate}
+                  LogOutHandler={LogOutHandler}/>
             </div>
             <div className="sidebar">
                 <SideBar 

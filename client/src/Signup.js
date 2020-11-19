@@ -82,16 +82,27 @@ function SignUp() {
     e.preventDefault();
   };
 
-    const handleImageUpload = async () => {
+    const handleImageUpload = () => {
     const formData = new FormData();
-    formData.append('file', data)
-    const res = await axios.post('http://34.64.248.85:8080/user/signup', formData);
-    console.log(res);
-    }
+    if(data === '') {
+      alert('사진을 선택해 주세요.')
+    } else {
+      fetch(data)
+      .then(res => res.blob())
+      .then(_data => {
+        formData.append('img', _data)
+        axios.post('http://34.64.248.85:8080/user/signup', formData)
+        .then(res => {
+          console.log("avartar UP!!", res);
+          
+        });
+      });
+      };
+    };
     return (
     <div>
-        <div className="ui form">
-        <div className="field">
+        <div className="intro">
+        <div className="detail">
         <div className="image">
         {err && <p>{err}</p>}
         <div 
@@ -100,7 +111,7 @@ function SignUp() {
             {data && <img style={dropAreaImageStyle} src={data} />}
         </div>
     </div>
-        <button className="remove-button" onClick={() => setData(false)}>Remove</button>
+        <button className="remove__button" onClick={() => setData(false)}>Remove</button>
           <input 
             className="email"
             value={email} 
@@ -122,7 +133,7 @@ function SignUp() {
             type="text" 
             placeholder="nickname" 
           />
-          <button className="avatarup" onClick={() => handleImageUpload}>프로필</button>
+          <button className="avatarup" onClick={handleImageUpload}>프로필</button>
           <button className="signup" onClick={() => signUpHandler()}>회원 가입</button>
           <div className="login-link">
             <a>

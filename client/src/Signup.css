@@ -1,4 +1,4 @@
-.field {
+.detail {
     position: absolute;
     top: 30%;
     left: 40%;
@@ -9,6 +9,35 @@
     grid-template-rows: repeat(8, 1fr);
     grid-gap: 3px 5px;
 
+}
+.detail > .image {
+    border: 0.5px solid rgb(44, 174, 102);
+    background-color: rgb(252, 246, 245);
+    border-radius: 6px;
+    grid-column: 1 / 3;
+    grid-row: 1 / 6;
+}
+.detail > .remove__button {
+    border: 0.5px solid rgb(44, 174, 102);
+    background-color: rgb(252, 246, 245);
+    border-radius: 4px;
+    grid-column: 1 / 2;
+    grid-row: 6 / 7;
+    color: rgb(44, 174, 102);
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+.avatarup {
+    border: 0;
+    background-color: rgb(44, 174, 102);
+    text-align: justify;
+    border-radius: 4px;
+    grid-column: 2 / 3;
+    grid-row: 6 / 7;
+    color: rgb(252, 246, 245);
+    text-align: center;
+    font-weight: bolder;
+    font-size: 0.8rem;
 }
 .email {
     border: 0.5px solid rgb(44, 174, 102);
@@ -56,35 +85,7 @@
     font-weight: bolder;
     font-size: 1rem;
 }
-.image {
-    border: 0.5px solid rgb(44, 174, 102);
-    background-color: rgb(252, 246, 245);
-    border-radius: 6px;
-    grid-column: 1 / 3;
-    grid-row: 1 / 6;
-}
-.remove-button {
-    border: 0.5px solid rgb(44, 174, 102);
-    background-color: rgb(252, 246, 245);
-    border-radius: 6px;
-    grid-column: 1 / 2;
-    grid-row: 6 / 7;
-    color: rgb(44, 174, 102);
-    font-weight: bolder;
-    font-size: 1.2rem;
-}
-.avatarup {
-    border: 0;
-    background-color: rgb(44, 174, 102);
-    text-align: justify;
-    border-radius: 4px;
-    grid-column: 2 / 3;
-    grid-row: 6 / 7;
-    color: rgb(252, 246, 245);
-    text-align: center;
-    font-weight: bolder;
-    font-size: 0.8rem;
-}
+
 .signup {
     border: 0;
     background-color: rgb(44, 174, 102);
@@ -96,6 +97,7 @@
     text-align: center;
     font-weight: bolder;
     font-size: 1rem;
+    cursor: pointer;
 }
 .login-link {
     grid-column: 1 / 7;

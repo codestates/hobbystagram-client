@@ -19,10 +19,13 @@ function MyPage({ userInfo, token}) {
   const history = useHistory();
   
   const userInfoHandler = async () => {
-    const response = await axios.post('http://34.64.248.85:8080/user/info', {
+    const authedAxios = axios.create(
+      { headers: { 
+          Authorization: `${token}`
+      }}
+    );
+    const response = await authedAxios.post('http://34.64.248.85:8080/user/info', {
       password: oldPassword,
-    }, {
-    // 여기에 토큰 넣기
     })
     if(response.status === 200) {
       axios.post('http://34.64.248.85:8080/user/change', {
@@ -34,6 +37,9 @@ function MyPage({ userInfo, token}) {
           alert("회원 정보가 수정되었습니다.")
           history.push('/contentspage')
         }
+      })
+      .catch(error => {
+        console.log(error);
       })
     }
   }

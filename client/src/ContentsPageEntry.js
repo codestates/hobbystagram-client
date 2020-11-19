@@ -22,7 +22,7 @@ function ContentsPageEntry({ photo, token, userInfo }) {
             {isOpen && (
                 <dialog
                     className="dialog"
-                    style={{ position: "absolute" }}
+                    style={{position: "absolute"}}
                     open
                 >
                     <button className="close-button" onClick={handlePhotoModal}>Close</button>
