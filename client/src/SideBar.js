@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import './SideBar.css';
 
 const width = '18rem';
 const height = '17rem';

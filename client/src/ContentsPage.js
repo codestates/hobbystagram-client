@@ -76,7 +76,7 @@ function ContentsPage({ userInfo, token, LogOutHandler, redirectToMyPage }) {
         );
         const res = await authedAxios.get('http://34.64.248.85:8080/content/favs')
         console.log('좋아요 기준 정렬', res);
-        // setPhotos(res);
+        setPhotos(res.data);
       }  
 
     return userInfo !== null ? (
