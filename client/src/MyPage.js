@@ -117,8 +117,8 @@ function MyPage({ userInfo, token}) {
   
     return (
     <div>
-      <div className="ui form">
-        <div className="field">
+      <div className="intro">
+        <div className="mypage__detail">
           {/* drag & drop 구역 */}
           <div className="image">
             {err && <p>{err}</p>}
@@ -131,7 +131,7 @@ function MyPage({ userInfo, token}) {
             {/* data &&  */}
             {/* }</div> */}
           </div>
-          <button className="remove-button" onClick={() => setData(false)}>Remove</button>
+          <button className="remove__button" onClick={() => setData(false)}>Remove</button>
           <button className="avatarup" onClick={handleImageUpload}>프로필</button>
           <input 
           className="oldpass"

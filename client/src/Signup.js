@@ -174,7 +174,7 @@ function SignUp() {
         </div>
       </div>
     </div>
-    </div>
+    
     );
 }
 export default withRouter(SignUp);
