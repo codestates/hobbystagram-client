@@ -13,8 +13,6 @@ function MyPage({ userInfo, token}) {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [nickname, setNickname] = useState("");
-  // const [img, setImage] = useState(null);
-  // 사진 drag & drop 을 위한 state
   const [data, setData] = useState(false);
   const [err, setErr] = useState(false);
 
@@ -40,24 +38,6 @@ function MyPage({ userInfo, token}) {
     }
   }
 
-  // const checkNickInfo = () => {
-  //   axios.post('http://34.64.248.85:8080/user/info', {
-  //       nickname: nickname
-  //   })
-  //   .then(res => {
-  //       if(res.status === 200) {
-  //           alert("사용 가능한 닉네임입니다.")
-  //       }
-  //   })
-  //   .catch((error) => {
-  //       alert("이미 사용중인 닉네임입니다.")
-  //   })
-  // }
-
-  // const handleImageChange = (e) => {
-  //   setImage(e.target.files[0])
-  // }
-
   const handleImageUpload = async () => {
       const formData = new FormData();
       formData.append('file', data)
@@ -65,7 +45,6 @@ function MyPage({ userInfo, token}) {
       console.log(res);
   }
 
-  // drag & drop 을 구현하기 위한 함수
   const dropAreaImageStyle = {
     width,
     height
@@ -127,9 +106,6 @@ function MyPage({ userInfo, token}) {
             onDrop={(e) => onDrop(e)} onDragOver={(e) => onDragOver(e)}>
             {data && <img style={dropAreaImageStyle} src={data} />}
             </div>
-            {/* <div className="button-wrapper">{ */}
-            {/* data &&  */}
-            {/* }</div> */}
           </div>
           <button className="remove__button" onClick={() => setData(false)}>Remove</button>
           <button className="avatarup" onClick={handleImageUpload}>프로필</button>
@@ -153,13 +129,6 @@ function MyPage({ userInfo, token}) {
             onChange={(e) => setNickname(e.target.value)} 
             type="text" placeholder="변경할 nickname" 
           />
-          {/* <button className="checknick" onClick={() => checkNickInfo()}>확인</button> */}
-          {/* <input 
-            type="file" 
-            style={{display: 'none'}}
-            accept="image/png, image/jpeg, image/gif"
-            onChange={handleImageChange} 
-          /> */}
           <button className="updateuser" onClick={() => userInfoHandler()}>정보 수정</button>
           <div className="contentspage-link">
             <a>

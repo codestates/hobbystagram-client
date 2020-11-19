@@ -1,23 +1,7 @@
-/* .images {
-    display: flex;
-    flex-direction: row-reverse;
-    flex-wrap: wrap;
-    align-content: space-around;
-    
-}
-
-.photo {
-    display: flex;
-    flex: 0.5 1 18%;
-    justify-content: space-around;
-    float: left;
-    align-items: center;
-    border: 5px solid red;
-} */
 .images {
    position: relative;
-    top: 1px;
-    left: 1px;
+   top: 1px;
+   left: 1px;
 }
 
 .photo {
@@ -27,4 +11,31 @@
     border: 1px solid rgb(44, 174, 102);
     border-radius: 8px;
     margin: 5px 8px;
+}
+
+.photo:hover {
+    transform: scale(1.03);
+    transition: 300ms ease-in;
+}
+
+.dialog {
+    position: absolute;
+    width: 45rem;
+    height: 48rem;
+    top: 0%;
+    /* left: 50%;
+    transform: translate(-50%, -50%); */
+    z-index: 1;
+    border: 3px solid rgb(44, 174, 102);
+    border-radius: 16px;
+}
+
+.close-button {
+    width: 7rem;
+    height: 2rem;
+    background-color: rgb(44, 174, 102);
+    border: 3px solid rgb(44, 174, 102);
+    border-radius: 8px;
+    color: rgb(252, 246, 245);
+    font-weight: bold;
 }

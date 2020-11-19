@@ -15,8 +15,6 @@
     display: inline-block;
     vertical-align: middle;
     padding-right: 20rem;
-    /* position: relative;
-    right: 22.7rem; */
 }
 .intro > h3 > .username {
     color: rgb(255, 123, 172);

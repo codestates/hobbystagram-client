@@ -8,10 +8,6 @@ function Login({ LoginSuccess }) {
   const [password, setPassword] = useState("");
 
   const logInHandler = async () => {
-      // email or password 가 입력이 되어있지 않은 상태에서 button click 시 error
-      // 둘 다 입력이 되어있다면 서버에 로그인 정보 요청
-      // 응답을 받아서 로그인 유저 정보를 업데이트하거나
-      // 에러 메시지를 띄움
 
     if(email === "" || password === "") {
         alert("회원 정보를 입력해 주세요")
@@ -25,7 +21,6 @@ function Login({ LoginSuccess }) {
         console.log('res.data', res.data.token);
 
         if(res.status === 200) {
-            // 유저 정보를 업데이트 해 주는 함수에 데이타 값을 담아 실행
             const user = JSON.parse(res.config.data); 
             const token = res.data.token; 
             LoginSuccess(user, token);
